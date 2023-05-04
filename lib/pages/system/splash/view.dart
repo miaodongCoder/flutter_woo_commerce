@@ -10,7 +10,7 @@ class SplashPage extends GetView<SplashController> {
   Widget _buildView() {
     return Center(
       child: Text(
-        "SplashPage - ${ConfigService.getInstance().version}",
+        "SplashPage - ${ConfigService.to.version}",
         style: const TextStyle(fontSize: 20),
       ),
     );

@@ -22,11 +22,16 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: RouteNames.systemSplash,
+      initialRoute: RouteNames.stylesStyleIndex,
       getPages: RoutePages.list,
       navigatorObservers: [
         RoutePages.observer,
       ],
+      translations: Translation(), // 词典
+      localizationsDelegates: Translation.localizationsDelegates, // 代理
+      supportedLocales: Translation.supportedLocales, // 支持的语言种类
+      locale: ConfigService.to.locale, // 当前语言种类
+      fallbackLocale: Translation.fallbackLocale, // 默认语言种类
     );
   }
 }

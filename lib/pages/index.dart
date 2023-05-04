@@ -26,7 +26,7 @@ export 'styles/icon/index.dart';
 export 'styles/image/index.dart';
 export 'styles/inputs/index.dart';
 export 'styles/other/index.dart';
-export 'styles/style_index/index.dart';
+export 'styles/styles_index/index.dart';
 export 'styles/text/index.dart';
 export 'styles/text_form/index.dart';
 export 'system/login/index.dart';
