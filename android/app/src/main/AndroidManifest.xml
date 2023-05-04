@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="woo_commerce.miaodong.com.flutter_woo_commerce">
    <application
-        android:label="flutter_woo_commerce"
+        android:label="Woo"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
