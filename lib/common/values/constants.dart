@@ -1,6 +1,10 @@
 // 本地存储key:
 class Constants {
-  // 下一次打开手机看到的还是当前的语言:
+  // 多语言编码:
   static const storageLanguageCode = 'language_code';
+  // 基地址url:
   static const wpApiBaseUrl = 'https://wpapi.ducafecat.tech';
+  // 主题编码:
+  static const storageThemeCode = 'theme_code';
+
 }
