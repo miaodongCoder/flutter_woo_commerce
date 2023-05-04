@@ -39,6 +39,8 @@ dependencies:
   get: ^4.6.5
   # 查询有关应用程序包的信息库:
   package_info_plus: ^3.1.2
+  # 本地存储:
+  shared_preferences: ^2.1.0
 
 
 dev_dependencies:

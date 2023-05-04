@@ -15,6 +15,14 @@ class ConfigService extends GetxService {
     getPlatform();
   }
 
+  // 两种初始化方法都可以:
+  // 初始化:
+  Future<ConfigService> init() async {
+    await getPlatform();
+    return this;
+  }
+
+  // 初始化:
   Future<void> getPlatform() async {
     _platform = await PackageInfo.fromPlatform();
   }
