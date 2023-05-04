@@ -119,7 +119,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_launcher_icons_maker:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: flutter_launcher_icons_maker
       sha256: fb1224fc47624229f0393709a2345513d391555c7064cf67b7f1889bd9324dee
