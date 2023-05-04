@@ -1,3 +1,3 @@
 library routers;
 
-// export './xxxx.dart';
+export 'pages.dart';
