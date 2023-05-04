@@ -18,8 +18,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: "/",
+      initialRoute: RouteNames.systemSplash,
       getPages: RoutePages.list,
+      navigatorObservers: [
+        RoutePages.observer,
+      ],
     );
   }
 }
