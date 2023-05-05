@@ -12,7 +12,7 @@ class StylesIndexPage extends GetView<StylesIndexController> {
     return Column(
       children: [
         ListTile(
-          onTap: () => controller.onLanguageSelected,
+          onTap: () => controller.onLanguageSelected(),
           title: Text(
             "语言 : ${ConfigService.to.locale.toLanguageTag()}",
           ),
