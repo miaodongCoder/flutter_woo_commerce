@@ -49,6 +49,9 @@ dependencies:
   flutter_svg: ^2.0.5
   # 购物车圆点:
   badges: ^3.1.1
+  # 图片扩展:
+  extended_image: ^7.0.2
+
 
 
 dev_dependencies:
