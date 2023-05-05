@@ -23,6 +23,12 @@ class StylesIndexPage extends GetView<StylesIndexController> {
             "主题 : ${ConfigService.to.isDarkModel ? 'Dark' : 'Light'}",
           ),
         ),
+        ListTile(
+          onTap: () => Get.toNamed(RouteNames.stylesText),
+          title: const Text(
+            "文本",
+          ),
+        ),
       ],
     );
   }
