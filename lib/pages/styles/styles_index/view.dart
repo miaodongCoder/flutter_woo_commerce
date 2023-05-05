@@ -41,6 +41,11 @@ class StylesIndexPage extends GetView<StylesIndexController> {
             "Image 图片",
           ),
         ),
+        // Button 按钮
+        ListTile(
+          onTap: () => Get.toNamed(RouteNames.stylesButtons),
+          title: const TextWidget.body1("Button 按钮"),
+        ),
       ],
     );
   }
