@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_woo_commerce/common/index.dart';
 import 'package:get/get.dart';
 
 class Global {
   static Future<void> init() async {
     // flutter与原生端的接口进行初始化, 这样再进行Service组件的初始化才不易报错, 这个方法要在runApp之前调用!
-    WidgetsFlutterBinding.ensureInitialized();
+    WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
     // 配置网络请求服务:
     Get.put<WPHttpService>(WPHttpService());
+    // 启动后清理不用的资源:
+    FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
     await Future.wait([
       // 本地{K : V}存储的初始化:

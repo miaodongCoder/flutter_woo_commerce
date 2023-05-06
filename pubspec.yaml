@@ -55,7 +55,8 @@ dependencies:
   intl: 0.17.0
   # 屏幕适配:
   flutter_screenutil: ^5.7.0
-
+  # 启动屏(防白屏):
+  flutter_native_splash: ^2.2.16
 
 
 
@@ -72,6 +73,14 @@ dev_dependencies:
   # 启动图标:
   flutter_launcher_icons_maker: ^0.10.2
 
+
+# 设备启动图:
+flutter_native_splash:
+  color: "#ffffff"
+  image: "assets/icons/launcher_android.png"
+
+
+# app 图标
 flutter_icons:
   android: true
   ios: true
