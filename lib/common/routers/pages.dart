@@ -8,6 +8,11 @@ class RoutePages {
   // 记录路由堆栈信息:
   static List<String> history = [];
   static List<GetPage> list = [
+    // App首页:
+    GetPage(
+      name: RouteNames.main,
+      page: () => const MainPage(),
+    ),
     GetPage(
       name: RouteNames.cartApplyPromoCode,
       page: () => const ApplyPromoCodePage(),

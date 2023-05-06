@@ -38,6 +38,8 @@ class WelcomeController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+    // 设置已打开 , 并存入本地:
+    ConfigService().isAlreadyOpen = true;
     _initData();
   }
 

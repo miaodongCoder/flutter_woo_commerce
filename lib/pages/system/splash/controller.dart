@@ -1,16 +1,9 @@
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_woo_commerce/common/routers/index.dart';
+import 'package:flutter_woo_commerce/common/index.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {
   SplashController();
-
-  _initData() {
-    // 删除设备启动图:
-    FlutterNativeSplash.remove();
-    _jumpToPage();
-    update(["splash"]);
-  }
 
   @override
   void onReady() {
@@ -18,12 +11,14 @@ class SplashController extends GetxController {
     _initData();
   }
 
-  _jumpToPage() {
-    // 启动屏后延时2秒显示欢迎页(轮播图):
-    Future.delayed(const Duration(seconds: 2), () {
-      Get.offAllNamed(
-        RouteNames.systemWelcome,
-      );
-    });
+  _initData() {
+    FlutterNativeSplash.remove();
+    if (ConfigService.to.isAlreadyOpen) {
+      // 删除设备启动图:
+      Get.offAllNamed(RouteNames.main);
+    } else {
+      Get.offAllNamed(RouteNames.systemWelcome);
+    }
+    update(["splash"]);
   }
 }

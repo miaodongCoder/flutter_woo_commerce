@@ -6,5 +6,6 @@ class Constants {
   static const wpApiBaseUrl = 'https://wpapi.ducafecat.tech';
   // 主题编码:
   static const storageThemeCode = 'theme_code';
-
+  // 首次打开:
+  static const storageAlreadyOpen = 'already_open';
 }
