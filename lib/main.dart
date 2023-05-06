@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: ConfigService.to.isDarkModel ? AppTheme.dark : AppTheme.light,
-          initialRoute: RouteNames.stylesStyleIndex,
+          initialRoute: RouteNames.systemSplash,
           getPages: RoutePages.list,
           navigatorObservers: [
             RoutePages.observer,
