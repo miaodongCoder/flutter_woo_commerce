@@ -53,6 +53,9 @@ dependencies:
   extended_image: ^7.0.2
   # 提供国际化和本地化功能:
   intl: 0.17.0
+  # 屏幕适配:
+  flutter_screenutil: ^5.7.0
+
 
 
 

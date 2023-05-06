@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_woo_commerce/global.dart';
 import 'package:get/route_manager.dart';
 
@@ -16,23 +17,37 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Flutter Demo',
-      // theme: ThemeData(
-      //   primarySwatch: Colors.blue,
-      // ),
-      theme: ConfigService.to.isDarkModel ? AppTheme.dark : AppTheme.light,
-      debugShowCheckedModeBanner: false,
-      initialRoute: RouteNames.stylesStyleIndex,
-      getPages: RoutePages.list,
-      navigatorObservers: [
-        RoutePages.observer,
-      ],
-      translations: Translation(), // 词典
-      localizationsDelegates: Translation.localizationsDelegates, // 代理
-      supportedLocales: Translation.supportedLocales, // 支持的语言种类
-      locale: ConfigService.to.locale, // 当前语言种类
-      fallbackLocale: Translation.fallbackLocale, // 默认语言种类
+    return ScreenUtilInit(
+      // 设计稿中的设备尺寸:
+      designSize: const Size(414, 896),
+      // 是否支持分屏尺寸:
+      splitScreenMode: false,
+      // 是否根据宽度高度中的最小值适配文字:
+      minTextAdapt: false,
+      builder: (context, child) {
+        return GetMaterialApp(
+          title: 'Flutter Demo',
+          debugShowCheckedModeBanner: false,
+          theme: ConfigService.to.isDarkModel ? AppTheme.dark : AppTheme.light,
+          initialRoute: RouteNames.stylesStyleIndex,
+          getPages: RoutePages.list,
+          navigatorObservers: [
+            RoutePages.observer,
+          ],
+          translations: Translation(), // 词典
+          localizationsDelegates: Translation.localizationsDelegates, // 代理
+          supportedLocales: Translation.supportedLocales, // 支持的语言种类
+          locale: ConfigService.to.locale, // 当前语言种类
+          fallbackLocale: Translation.fallbackLocale, // 默认语言种类
+          builder: (context, child) {
+            // 不随系统字体缩放比例:
+            return MediaQuery(
+              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+              child: child!,
+            );
+          },
+        );
+      },
     );
   }
 }
