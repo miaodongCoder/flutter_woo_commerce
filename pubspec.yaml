@@ -57,6 +57,8 @@ dependencies:
   flutter_screenutil: ^5.7.0
   # 启动屏(防白屏):
   flutter_native_splash: ^2.2.16
+  # Carousel:
+  carousel_slider: ^4.2.1
 
 
 
