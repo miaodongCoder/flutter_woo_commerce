@@ -61,6 +61,9 @@ dependencies:
   carousel_slider: ^4.2.1
   # 表单验证工具:
   validatorless: ^1.2.3
+  # 验证码工具:
+  pinput: ^2.2.31
+
 
 
 
