@@ -12,7 +12,8 @@ class AppSpace {
   static double get card => 15;
 
   /// 输入框 - 10, 10 上下，左右:
-  static EdgeInsetsGeometry get edgeInput => const EdgeInsets.symmetric(vertical: 10, horizontal: 10);
+  static EdgeInsetsGeometry get edgeInput =>
+      const EdgeInsets.symmetric(vertical: 10, horizontal: 10);
 
   /// 列表视图:
   static double get listView => 5;

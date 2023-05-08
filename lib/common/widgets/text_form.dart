@@ -85,7 +85,9 @@ class _TextFormWidgetState extends State<TextFormWidget> {
           ? InputDecoration(
               hintText: widget.hintText, // 提示文字
               // 标题
-              labelText: widget.isMustBeEnter == true ? "* ${widget.labelText}" : widget.labelText,
+              labelText: widget.isMustBeEnter == true
+                  ? "* ${widget.labelText}"
+                  : widget.labelText,
               prefixIcon: IconButton(
                 onPressed: () {},
                 icon: Icon(
@@ -102,7 +104,9 @@ class _TextFormWidgetState extends State<TextFormWidget> {
                   });
                 },
                 icon: Icon(
-                  _isShowObscureIcon == true ? Icons.visibility : Icons.visibility_off,
+                  _isShowObscureIcon == true
+                      ? Icons.visibility
+                      : Icons.visibility_off,
                   size: 20,
                   color: AppColors.surfaceVariant,
                 ),
@@ -110,7 +114,9 @@ class _TextFormWidgetState extends State<TextFormWidget> {
             )
           : InputDecoration(
               hintText: widget.hintText,
-              labelText: widget.isMustBeEnter == true ? "* ${widget.labelText}" : widget.labelText,
+              labelText: widget.isMustBeEnter == true
+                  ? "* ${widget.labelText}"
+                  : widget.labelText,
               prefixIcon: IconButton(
                 onPressed: () {},
                 icon: widget.prefixIcons ??

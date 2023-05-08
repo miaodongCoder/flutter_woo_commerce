@@ -8,6 +8,8 @@ class RegisterPinController extends GetxController {
 
   RegisterPinController();
 
+  UserRegisterReq? req = Get.arguments;
+
   _initData() {
     update(["register_pin"]);
   }
@@ -23,9 +25,10 @@ class RegisterPinController extends GetxController {
     debugPrint("onPinSubmit $value");
   }
 
-  /// 提交按钮返回:
+  /// 提交按钮提交:
   void onButtonSubmit(String? value) {
     debugPrint("onButtonSubmit => $value");
+    _register();
   }
 
   /// 按钮返回:
@@ -42,5 +45,23 @@ class RegisterPinController extends GetxController {
   /// 验证器:
   String? pinValidator(String? value) {
     return value == '111111' ? null : LocaleKeys.commonMessageIncorrect.trParams({"method": "Pin"});
+  }
+
+  // 注册:
+  Future<void> _register() async {
+    try {
+      Loading.show();
+
+      // 暂时提交, 后续修改aes 加密后处理:
+      bool isOk = await UserApi.register(req);
+      if (isOk) {
+        Loading.success(LocaleKeys.commonMessageSuccess.trParams({"method": "Register"}));
+        Get.back(result: true);
+      }
+
+      // Loading.success(LocaleKeys.commonMessageSuccess.trParams({"method": "Register"}));
+    } finally {
+      Loading.dismiss();
+    }
   }
 }

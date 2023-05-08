@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_woo_commerce/common/index.dart';
+import 'package:get/get.dart' hide Response;
 
 /// 拦截
 class RequestInterceptors extends Interceptor {
@@ -34,33 +36,37 @@ class RequestInterceptors extends Interceptor {
   }
 
   /// 退出并重新登录
-  // Future<void> _errorNoAuthLogout() async {
-  //   await UserService.to.logout();
-  //   Get.toNamed(RouteNames.systemLogin);
-  // }
+  Future<void> _errorNoAuthLogout() async {
+    // await UserService.to.logout();
+    Get.toNamed(RouteNames.systemLogin);
+  }
 
   @override
   Future<void> onError(DioError err, ErrorInterceptorHandler handler) async {
-    // final exception = HttpException(err.message ?? "");
     switch (err.type) {
-      case DioErrorType.badResponse: // 服务端自定义错误体处理
+      // 服务端自定义错误体处理
+
+      case DioErrorType.badResponse:
         {
-          // final response = err.response;
-          // final errorMessage = ErrorMessageModel.fromJson(response?.data);
-          // switch (errorMessage.statusCode) {
-          //   case 401:
-          //     _errorNoAuthLogout();
-          //     break;
-          //   case 404:
-          //     break;
-          //   case 500:
-          //     break;
-          //   case 502:
-          //     break;
-          //   default:
-          //     break;
-          // }
-          // Loading.error(errorMessage.message);
+          final response = err.response;
+          final errorMessage = ErrorMessageModel.fromJson(response?.data);
+          switch (errorMessage.statusCode) {
+            // 已存在使用此电子邮件地址的帐户，请登录:
+            case 400:
+              break;
+            case 401:
+              _errorNoAuthLogout();
+              break;
+            case 404:
+              break;
+            case 500:
+              break;
+            case 502:
+              break;
+            default:
+              break;
+          }
+          Loading.error(errorMessage.message);
         }
         break;
       case DioErrorType.unknown:
@@ -72,7 +78,7 @@ class RequestInterceptors extends Interceptor {
       default:
         break;
     }
-    // err.error = exception;
+
     handler.next(err);
   }
 }

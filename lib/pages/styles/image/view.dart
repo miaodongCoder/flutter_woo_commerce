@@ -16,10 +16,6 @@ class ImagePage extends GetView<ImageController> {
               "https://ducafecat.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2022/02/90bb74497f090c48e1df1ec1ca31fb11-450x450.jpg"),
           title: TextWidget.body1('ImageWidget.url'),
         ),
-
-
-
-        
         ListTile(
           leading: ImageWidget.asset(
             AssetsImage.pPaypalPng,

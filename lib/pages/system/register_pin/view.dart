@@ -51,7 +51,9 @@ class RegisterPinPage extends GetView<RegisterPinController> {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       child: <Widget>[
         // 提示文字:
-        TextWidget.body1(LocaleKeys.registerPinFormTip.tr).paddingBottom(20.w).alignLeft(),
+        TextWidget.body1(LocaleKeys.registerPinFormTip.tr)
+            .paddingBottom(20.w)
+            .alignLeft(),
         // Pin:
         PinPutWidget(
           controller: controller.pinController,

@@ -4,9 +4,11 @@ import 'package:get/get.dart';
 class TextFormController extends GetxController {
   GlobalKey formKey = GlobalKey<FormState>();
 
-  TextEditingController userNameController = TextEditingController(text: "userName");
+  TextEditingController userNameController =
+      TextEditingController(text: "userName");
 
-  TextEditingController passwordController = TextEditingController(text: "password");
+  TextEditingController passwordController =
+      TextEditingController(text: "password");
   TextFormController();
 
   _initData() {

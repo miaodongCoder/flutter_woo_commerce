@@ -26,7 +26,9 @@ class WelcomePage extends GetView<WelcomeController> {
       _buildSlider(),
       // 控制栏:
       _buildBar(),
-    ].toColumn(mainAxisAlignment: MainAxisAlignment.spaceAround).paddingAll(AppSpace.page);
+    ]
+        .toColumn(mainAxisAlignment: MainAxisAlignment.spaceAround)
+        .paddingAll(AppSpace.page);
   }
 
   Widget _buildSlider() {

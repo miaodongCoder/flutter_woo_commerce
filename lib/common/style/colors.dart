@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 /// 应用颜色样式:
 class AppColors {
   /// 强调色:
-  static Color get highlight => Get.isDarkMode ? const Color(0xFFFFB4A9) : const Color(0xFFF77866);
+  static Color get highlight =>
+      Get.isDarkMode ? const Color(0xFFFFB4A9) : const Color(0xFFF77866);
 
   static Color get background => Get.theme.colorScheme.background;
 
@@ -28,11 +29,13 @@ class AppColors {
 
   static Color get onPrimary => Get.theme.colorScheme.onPrimary;
 
-  static Color get onPrimaryContainer => Get.theme.colorScheme.onPrimaryContainer;
+  static Color get onPrimaryContainer =>
+      Get.theme.colorScheme.onPrimaryContainer;
 
   static Color get onSecondary => Get.theme.colorScheme.onSecondary;
 
-  static Color get onSecondaryContainer => Get.theme.colorScheme.onSecondaryContainer;
+  static Color get onSecondaryContainer =>
+      Get.theme.colorScheme.onSecondaryContainer;
 
   static Color get onSurface => Get.theme.colorScheme.onSurface;
 
@@ -40,7 +43,8 @@ class AppColors {
 
   static Color get onTertiary => Get.theme.colorScheme.onTertiary;
 
-  static Color get onTertiaryContainer => Get.theme.colorScheme.onTertiaryContainer;
+  static Color get onTertiaryContainer =>
+      Get.theme.colorScheme.onTertiaryContainer;
 
   static Color get outline => Get.theme.colorScheme.outline;
 
@@ -50,7 +54,8 @@ class AppColors {
 
   static Color get secondary => Get.theme.colorScheme.secondary;
 
-  static Color get secondaryContainer => Get.theme.colorScheme.secondaryContainer;
+  static Color get secondaryContainer =>
+      Get.theme.colorScheme.secondaryContainer;
 
   static Color get shadow => Get.theme.colorScheme.shadow;
 
