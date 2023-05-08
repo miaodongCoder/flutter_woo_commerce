@@ -1,18 +1,17 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TextFormController extends GetxController {
+  GlobalKey formKey = GlobalKey<FormState>();
+
+  TextEditingController userNameController = TextEditingController(text: "userName");
+
+  TextEditingController passwordController = TextEditingController(text: "password");
   TextFormController();
 
   _initData() {
     update(["text_form"]);
   }
-
-  void onTap() {}
-
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  // }
 
   @override
   void onReady() {
@@ -20,8 +19,11 @@ class TextFormController extends GetxController {
     _initData();
   }
 
-  // @override
-  // void onClose() {
-  //   super.onClose();
-  // }
+  @override
+  void onClose() {
+    super.onClose();
+
+    userNameController.dispose();
+    passwordController.dispose();
+  }
 }
