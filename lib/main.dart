@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_woo_commerce/global.dart';
 import 'package:get/route_manager.dart';
@@ -39,11 +40,13 @@ class MyApp extends StatelessWidget {
           supportedLocales: Translation.supportedLocales, // 支持的语言种类
           locale: ConfigService.to.locale, // 当前语言种类
           fallbackLocale: Translation.fallbackLocale, // 默认语言种类
-          builder: (context, child) {
+          builder: (context, widget) {
+            // EasyLoading做初始化:
+            widget = EasyLoading.init()(context, widget);
             // 不随系统字体缩放比例:
             return MediaQuery(
               data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-              child: child!,
+              child: widget,
             );
           },
         );

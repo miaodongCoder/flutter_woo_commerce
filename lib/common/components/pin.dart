@@ -40,12 +40,12 @@ class PinPutWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
       ),
     );
-    // 编辑
+    // 编辑: copyDecorationWith方法标表示除了 `decoration` 其他都和 `defaultPinTheme`保持一致!
     final focusedPinTheme = defaultPinTheme.copyDecorationWith(
       border: Border.all(color: AppColors.primary),
       borderRadius: BorderRadius.circular(5),
     );
-    // 完成
+    // 完成:
     final submittedPinTheme = defaultPinTheme.copyWith(
       decoration: defaultPinTheme.decoration?.copyWith(
         color: AppColors.surfaceVariant,

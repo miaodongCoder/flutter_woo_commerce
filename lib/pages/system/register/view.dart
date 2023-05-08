@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_woo_commerce/common/components/page_title.dart';
 import 'package:flutter_woo_commerce/common/index.dart';
-import 'package:flutter_woo_commerce/common/utils/validators.dart';
 import 'package:flutter_woo_commerce/common/widgets/text_form.dart';
 import 'package:get/get.dart';
 import 'package:validatorless/validatorless.dart';

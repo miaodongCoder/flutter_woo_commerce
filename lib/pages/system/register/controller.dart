@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_woo_commerce/common/routers/index.dart';
 import 'package:get/get.dart';
 
 class RegisterController extends GetxController {
@@ -38,6 +39,7 @@ class RegisterController extends GetxController {
     final state = formKey.currentState as FormState;
     if (state.validate()) {
       // 验证通过, 提交表单数据:
+      Get.toNamed(RouteNames.systemRegisterPin);
     }
   }
 

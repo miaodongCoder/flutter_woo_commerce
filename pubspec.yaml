@@ -63,6 +63,9 @@ dependencies:
   validatorless: ^1.2.3
   # 验证码工具:
   pinput: ^2.2.31
+  # Toast:
+  flutter_easyloading: ^3.0.5
+
 
 
 
