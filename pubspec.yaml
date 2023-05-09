@@ -65,6 +65,8 @@ dependencies:
   pinput: ^2.2.31
   # Toast:
   flutter_easyloading: ^3.0.5
+  # 密码AES加密:
+  encrypt: ^5.0.1
 
 
 

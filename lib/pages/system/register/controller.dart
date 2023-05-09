@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_woo_commerce/common/models/request/user_register.dart';
 import 'package:flutter_woo_commerce/common/routers/index.dart';
+import 'package:flutter_woo_commerce/common/utils/encrypt.dart';
 import 'package:get/get.dart';
 
 class RegisterController extends GetxController {
-  TextEditingController userNameController =
-      TextEditingController(text: "userName");
+  TextEditingController userNameController = TextEditingController(text: "userName");
   TextEditingController emailController = TextEditingController(text: "email");
-  TextEditingController firstNameController =
-      TextEditingController(text: "firstName");
-  TextEditingController lastNameController =
-      TextEditingController(text: "lastName");
-  TextEditingController passwordController =
-      TextEditingController(text: "password");
+  TextEditingController firstNameController = TextEditingController(text: "firstName");
+  TextEditingController lastNameController = TextEditingController(text: "lastName");
+  TextEditingController passwordController = TextEditingController(text: "password");
 
   GlobalKey formKey = GlobalKey<FormState>();
 
@@ -43,8 +40,8 @@ class RegisterController extends GetxController {
   void onSignUp() {
     final state = formKey.currentState as FormState;
     if (state.validate()) {
-      // 密码的传递要做加密处理:
-      var password = passwordController.text;
+      // 密码(AES加密处理):
+      var password = EncryptUtil().aesEncode(passwordController.text);
       // 验证通过, 提交表单数据:
       Get.offNamed(
         RouteNames.systemRegisterPin,
