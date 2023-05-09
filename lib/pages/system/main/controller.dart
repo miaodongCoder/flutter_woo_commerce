@@ -1,7 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_woo_commerce/common/index.dart';
 import 'package:get/get.dart';
 
 class MainController extends GetxController {
+  // 分页管理控制器:
+  final PageController pageController = PageController();
+  int currentIndex = 0;
   MainController();
 
   @override
@@ -17,5 +21,20 @@ class MainController extends GetxController {
     Get.toNamed(RouteNames.systemLogin);
 
     update(["main"]);
+  }
+
+  void onIndexChanged(int index) {
+    currentIndex = index;
+    update(["main"]);
+  }
+
+  void onJumpToPage(int page) {
+    pageController.jumpToPage(page);
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    pageController.dispose();
   }
 }
