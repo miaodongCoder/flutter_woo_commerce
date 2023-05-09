@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_woo_commerce/common/index.dart';
+import 'package:flutter_woo_commerce/pages/index.dart';
 import 'package:flutter_woo_commerce/pages/system/main/widgets/navigation.dart';
 import 'package:get/get.dart';
-
-import 'index.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -59,12 +58,12 @@ class _MainViewGetX extends GetView<MainController> {
                 NavigationItemModel(
                   label: LocaleKeys.tabBarCart.tr,
                   icon: AssetsSvgs.navCartSvg,
-                  count: 3,
+                  count: 3, // 购物车数量
                 ),
                 NavigationItemModel(
                   label: LocaleKeys.tabBarMessage.tr,
                   icon: AssetsSvgs.navMessageSvg,
-                  count: 9,
+                  count: 9, // 新消息数量
                 ),
                 NavigationItemModel(
                   label: LocaleKeys.tabBarProfile.tr,
@@ -77,15 +76,15 @@ class _MainViewGetX extends GetView<MainController> {
         ),
         // 内容页
         body: PageView(
+          // 不响应用户的滚动:
           physics: const NeverScrollableScrollPhysics(),
           controller: controller.pageController,
           onPageChanged: controller.onIndexChanged,
-          children: [
-            // 加入空页面占位:
-            const TextWidget.title1("1").center(),
-            const TextWidget.title1("2").center(),
-            const TextWidget.title1("3").center(),
-            const TextWidget.title1("4").center(),
+          children: const [
+            HomePage(),
+            CartIndexPage(),
+            MsgIndexPage(),
+            MyIndexPage(),
           ],
         ),
       ),
@@ -95,16 +94,10 @@ class _MainViewGetX extends GetView<MainController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MainController>(
-      init: MainController(),
       id: "main",
       builder: (_) {
-        return Scaffold(
-          appBar: AppBar(title: const Text("main")),
-          body: SafeArea(
-            bottom: false,
-            child: _buildView(),
-          ),
-        );
+        // 只作为容器, 内部的SafeArea由各自的子控制器去定制:
+        return _buildView();
       },
     );
   }

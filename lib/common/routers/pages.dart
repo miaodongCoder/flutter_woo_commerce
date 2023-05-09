@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_woo_commerce/common/index.dart';
+import 'package:flutter_woo_commerce/pages/system/main/binding.dart';
 import 'package:get/route_manager.dart';
 import '../../pages/index.dart';
 
@@ -12,6 +13,7 @@ class RoutePages {
     GetPage(
       name: RouteNames.main,
       page: () => const MainPage(),
+      binding: MainBinding(),
     ),
     GetPage(
       name: RouteNames.cartApplyPromoCode,

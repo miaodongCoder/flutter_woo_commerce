@@ -37,7 +37,7 @@ class BuildNavigation extends StatelessWidget {
             item.icon,
             size: 20,
             color: color,
-            badgeString: item.count > 0 ? item.count.toString() : null,
+            badgeString: item.count > 0 ? '${item.count}' : null,
           ).paddingBottom(2),
           // 文字:
           TextWidget.body1(
