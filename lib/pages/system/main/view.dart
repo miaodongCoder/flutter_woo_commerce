@@ -32,21 +32,20 @@ class _MainViewGetX extends GetView<MainController> {
   Widget _buildView() {
     DateTime? lastPressedAt;
     return WillPopScope(
+      // 防止连续点击两次退出
       onWillPop: () async {
         if (lastPressedAt == null || DateTime.now().difference(lastPressedAt!) > const Duration(seconds: 1)) {
           lastPressedAt = DateTime.now();
           Loading.toast('Press again to exit');
           return false;
         }
-
         await SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-
         return true;
       },
       child: Scaffold(
         extendBody: true,
         resizeToAvoidBottomInset: false,
-        // 导航栏:
+        // 导航栏
         bottomNavigationBar: GetBuilder<MainController>(
           id: 'navigation',
           builder: (controller) {
@@ -72,21 +71,21 @@ class _MainViewGetX extends GetView<MainController> {
                   icon: AssetsSvgs.navProfileSvg,
                 ),
               ],
-              onTap: controller.onJumpToPage,
+              onTap: controller.onJumpToPage, // 切换tab事件
             );
           },
         ),
-        // 内容页:
+        // 内容页
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: controller.pageController,
           onPageChanged: controller.onIndexChanged,
-          children: const [
+          children: [
             // 加入空页面占位:
-            Text("1"),
-            Text("2"),
-            Text("3"),
-            Text("4"),
+            const TextWidget.title1("1").center(),
+            const TextWidget.title1("2").center(),
+            const TextWidget.title1("3").center(),
+            const TextWidget.title1("4").center(),
           ],
         ),
       ),
@@ -102,6 +101,7 @@ class _MainViewGetX extends GetView<MainController> {
         return Scaffold(
           appBar: AppBar(title: const Text("main")),
           body: SafeArea(
+            bottom: false,
             child: _buildView(),
           ),
         );
