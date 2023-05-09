@@ -6,16 +6,11 @@ import 'package:get/get.dart' hide Response;
 class RequestInterceptors extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    // super.onRequest(options, handler);
-    // if (UserService.to.hasToken) {
-    //   options.headers['Authorization'] = 'Bearer ${UserService.to.token}';
-    // }
+    // http header 头加入 Authorization:
+    if (UserService.to.hasToken) {
+      options.headers['Authorization'] = 'Bearer ${UserService.to.token}';
+    }
     return handler.next(options);
-    // 如果你想完成请求并返回一些自定义数据，你可以resolve一个Response对象 `handler.resolve(response)`。
-    // 这样请求将会被终止，上层then会被调用，then中返回的数据将是你的自定义response.
-    //
-    // 如果你想终止请求并触发一个错误,你可以返回一个`DioError`对象,如`handler.reject(error)`，
-    // 这样请求将被中止并触发异常，上层catchError会被调用。
   }
 
   @override
@@ -35,12 +30,6 @@ class RequestInterceptors extends Interceptor {
     }
   }
 
-  /// 退出并重新登录
-  Future<void> _errorNoAuthLogout() async {
-    // await UserService.to.logout();
-    Get.toNamed(RouteNames.systemLogin);
-  }
-
   @override
   Future<void> onError(DioError err, ErrorInterceptorHandler handler) async {
     switch (err.type) {
@@ -54,7 +43,9 @@ class RequestInterceptors extends Interceptor {
             // 已存在使用此电子邮件地址的帐户，请登录:
             case 400:
               break;
+            // 401 未登录:
             case 401:
+              // 注销 并跳转到登录页面:
               _errorNoAuthLogout();
               break;
             case 404:
@@ -80,5 +71,11 @@ class RequestInterceptors extends Interceptor {
     }
 
     handler.next(err);
+  }
+
+  /// 退出并重新登录:
+  Future<void> _errorNoAuthLogout() async {
+    await UserService.to.logout();
+    Get.toNamed(RouteNames.systemLogin);
   }
 }

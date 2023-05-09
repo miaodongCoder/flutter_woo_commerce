@@ -132,6 +132,7 @@ class RegisterPage extends GetView<RegisterController> {
     ).paddingBottom(AppSpace.listRow);
   }
 
+  // 已有账号:
   Widget _buildTips() {
     return <Widget>[
       TextWidget.body2(LocaleKeys.registerHaveAccount.tr),

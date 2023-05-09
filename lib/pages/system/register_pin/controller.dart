@@ -44,7 +44,9 @@ class RegisterPinController extends GetxController {
 
   /// 验证器:
   String? pinValidator(String? value) {
-    return value == '111111' ? null : LocaleKeys.commonMessageIncorrect.trParams({"method": "Pin"});
+    return value == '111111'
+        ? null
+        : LocaleKeys.commonMessageIncorrect.trParams({"method": "Pin"});
   }
 
   // 注册:
@@ -55,7 +57,8 @@ class RegisterPinController extends GetxController {
       // 暂时提交, 后续修改aes 加密后处理:
       bool isOk = await UserApi.register(req);
       if (isOk) {
-        Loading.success(LocaleKeys.commonMessageSuccess.trParams({"method": "Register"}));
+        Loading.success(
+            LocaleKeys.commonMessageSuccess.trParams({"method": "Register"}));
         Get.back(result: true);
       }
 

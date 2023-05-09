@@ -17,7 +17,7 @@ class WPHttpService extends GetxService {
         contentType: 'application/json; charset=utf-8',
         responseType: ResponseType.json);
     _dio = Dio(options);
-    // 添加拦截器:
+    // 添加拦截器:做成功或错误的处理操作:
     _dio.interceptors.add(RequestInterceptors());
   }
 

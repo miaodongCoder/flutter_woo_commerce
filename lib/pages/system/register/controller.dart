@@ -60,5 +60,8 @@ class RegisterController extends GetxController {
   }
 
   /// 登录:
-  void onSignIn() {}
+  void onSignIn() {
+    // 把当前注册路由替换为登录路由, 基地址路由还是main:
+    Get.offNamed(RouteNames.systemLogin);
+  }
 }
