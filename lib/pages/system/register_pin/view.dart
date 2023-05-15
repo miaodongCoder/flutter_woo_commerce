@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_woo_commerce/common/components/page_title.dart';
-import 'package:flutter_woo_commerce/common/components/pin.dart';
 import 'package:flutter_woo_commerce/common/index.dart';
 import 'package:get/get.dart';
 
