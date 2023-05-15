@@ -14,18 +14,20 @@ class HomeController extends GetxController {
   // 最新商品列表数据:
   List<ProductModel> latestProductList = [];
 
-  void onChangeBanner(int index, CarouselPageChangedReason reason) {
-    currentBannerIndex = index;
-    update(['home_banner']);
-  }
-
   HomeController();
-
   @override
   void onReady() {
     super.onReady();
     _initData();
   }
+
+  void onChangeBanner(int index, CarouselPageChangedReason reason) {
+    currentBannerIndex = index;
+    update(['home_banner']);
+  }
+
+  /// 分类点击事件:
+  void onCategoryTap(int categoryId) {}
 
   /// 导航点击事件:
   void onAppBarTap() {}
