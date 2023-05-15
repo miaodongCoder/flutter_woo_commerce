@@ -9,6 +9,7 @@ class EncryptUtil {
   final iv = IV.fromUtf8(Constants.aesIV);
   static final EncryptUtil _instance = EncryptUtil._internal();
   factory EncryptUtil() => _instance;
+
   /// 内部方法:
   EncryptUtil._internal() {
     encrypter = Encrypter(

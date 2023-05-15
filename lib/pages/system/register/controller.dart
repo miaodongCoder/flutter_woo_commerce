@@ -5,11 +5,15 @@ import 'package:flutter_woo_commerce/common/utils/encrypt.dart';
 import 'package:get/get.dart';
 
 class RegisterController extends GetxController {
-  TextEditingController userNameController = TextEditingController(text: "userName");
+  TextEditingController userNameController =
+      TextEditingController(text: "userName");
   TextEditingController emailController = TextEditingController(text: "email");
-  TextEditingController firstNameController = TextEditingController(text: "firstName");
-  TextEditingController lastNameController = TextEditingController(text: "lastName");
-  TextEditingController passwordController = TextEditingController(text: "password");
+  TextEditingController firstNameController =
+      TextEditingController(text: "firstName");
+  TextEditingController lastNameController =
+      TextEditingController(text: "lastName");
+  TextEditingController passwordController =
+      TextEditingController(text: "password");
 
   GlobalKey formKey = GlobalKey<FormState>();
 
