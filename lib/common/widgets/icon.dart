@@ -144,7 +144,7 @@ class IconWidget extends StatelessWidget {
     // 圆点:
     if (isDot == true) {
       return Badge(
-        position: BadgePosition.bottomEnd(bottom: 0, end: -2),
+        position: BadgePosition.topEnd(top: 0, end: -7),
         badgeStyle: BadgeStyle(
           elevation: 0,
           badgeColor: AppColors.primary,
