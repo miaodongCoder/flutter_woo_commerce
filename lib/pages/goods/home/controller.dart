@@ -32,6 +32,10 @@ class HomeController extends GetxController {
   /// 导航点击事件:
   void onAppBarTap() {}
 
+  /// `全部`按钮点击事件:
+  /// featured: 是否为推荐商品~
+  void onAllBarTap(bool featured) {}
+
   _initData() async {
     // 轮播图:
     bannerItems = await SystemApi.banners();

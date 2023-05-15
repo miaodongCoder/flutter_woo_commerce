@@ -29,30 +29,26 @@ class HomePage extends GetView<HomeController> {
   Widget _buildView() {
     return CustomScrollView(
       slivers: <Widget>[
-        // 轮播广告
+        // 轮播广告:
         _buildBanner(),
-
-        // 分类导航
+        // 分类导航:
         _buildCategories(),
+        // 推荐商品:
+        _buildSectionTitleWithTitle(LocaleKeys.gHomeFlashSell.tr),
+        // 推荐商品列表:
+        if (controller.recommendProductList.isNotEmpty) _buildRecommendProductList(controller.recommendProductList),
+        if (controller.recommendProductList.isEmpty) const SliverToBoxAdapter(),
 
-        // Flash Sell
-        // title
-        Text(LocaleKeys.gHomeFlashSell.tr).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page),
-
-        // list
-        _buildFlashSell(),
-
-        // new product
-        // title
-        Text(LocaleKeys.gHomeNewProduct.tr).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page),
-
-        // list
-        _buildNewSell(),
+        // 最新商品:
+        _buildSectionTitleWithTitle(LocaleKeys.gHomeNewProduct.tr),
+        // 最新商品列表:
+        if (controller.latestProductList.isNotEmpty) _buildLatestProductList(controller.latestProductList),
+        if (controller.latestProductList.isEmpty) const SliverToBoxAdapter(),
       ],
     );
   }
 
-  // 导航栏
+  // 导航栏:
   AppBar _buildAppBar() {
     return AppBar(
       // 背景透明
@@ -87,7 +83,7 @@ class HomePage extends GetView<HomeController> {
     );
   }
 
-  // 轮播广告
+  // 轮播广告:
   Widget _buildBanner() {
     return GetBuilder<HomeController>(
       init: controller,
@@ -102,7 +98,7 @@ class HomePage extends GetView<HomeController> {
     ).clipRRect(all: AppSpace.button).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page);
   }
 
-  // 分类导航
+  // 分类导航横滑列表:
   Widget _buildCategories() {
     return <Widget>[
       for (var i = 0; i < controller.categoryItems.length; i++)
@@ -118,13 +114,56 @@ class HomePage extends GetView<HomeController> {
         .sliverPaddingHorizontal(AppSpace.page);
   }
 
-  // Flash Sell
-  Widget _buildFlashSell() {
-    return Container().sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page);
+  /// 商品列表的标题栏:
+  Widget _buildSectionTitleWithTitle(String title) {
+    return Text(title).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page);
   }
 
-  // New Sell
-  Widget _buildNewSell() {
-    return Container().sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page);
+  // 推荐商品列表:
+  Widget _buildRecommendProductList(List<ProductModel> productList) {
+    return <Widget>[
+      for (var i = 0; i < productList.length; i++)
+        ProductItemWidget(
+          productList[i],
+          imgHeight: 117.w,
+          imgWidth: 120.w,
+        )
+            .constrained(
+              width: 120.w,
+              height: 170.w,
+            )
+            .paddingRight(AppSpace.listItem)
+    ]
+        .toListView(
+          scrollDirection: Axis.horizontal,
+        )
+        .height(170.w)
+        .paddingBottom(AppSpace.listRow)
+        .sliverToBoxAdapter()
+        .sliverPaddingHorizontal(AppSpace.page);
+  }
+
+  // 最新商品列表:
+  Widget _buildLatestProductList(List<ProductModel> productList) {
+    return <Widget>[
+      for (var i = 0; i < productList.length; i++)
+        ProductItemWidget(
+          productList[i],
+          imgHeight: 117.w,
+          imgWidth: 120.w,
+        )
+            .constrained(
+              width: 120.w,
+              height: 170.w,
+            )
+            .paddingRight(AppSpace.listItem)
+    ]
+        .toListView(
+          scrollDirection: Axis.horizontal,
+        )
+        .height(170.w)
+        .paddingBottom(AppSpace.listRow)
+        .sliverToBoxAdapter()
+        .sliverPaddingHorizontal(AppSpace.page);
   }
 }
