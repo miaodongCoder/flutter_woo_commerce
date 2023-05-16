@@ -117,7 +117,7 @@ class HomePage extends GetView<HomeController> {
     return <Widget>[
       for (var i = 0; i < controller.categoryItems.length; i++)
         CategoryListItemWidget(
-          categoryModel: controller.categoryItems[i],
+          category: controller.categoryItems[i],
           onTap: (categoryId) => controller.onCategoryTap(categoryId),
         ).paddingRight(AppSpace.listItem),
     ]
