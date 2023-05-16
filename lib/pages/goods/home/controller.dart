@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -11,15 +13,23 @@ class HomeController extends GetxController {
   // 分类导航数据:
   List<CategoryModel> categoryItems = [];
   // 推荐商品列表数据:
-  List<ProductModel> recommendProductList = [];
+  List<ProductModel> flashSellList = [];
   // 最新商品列表数据:
-  List<ProductModel> latestProductList = [];
+  List<ProductModel> newProductList = [];
   // 刷新控制器:
   final RefreshController refreshController = RefreshController(initialRefresh: true);
   int _page = 1;
   final int _limit = 20;
 
   HomeController();
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    _loadCacheData();
+  }
+
   @override
   void onReady() {
     super.onReady();
@@ -47,11 +57,44 @@ class HomeController extends GetxController {
     // 分类:
     categoryItems = await ProductApi.categories();
     // 推荐商品:
-    recommendProductList = await ProductApi.products(ProductsReq(featured: true));
+    flashSellList = await ProductApi.products(ProductsReq(featured: true));
     // 新商品:
-    latestProductList = await ProductApi.products(ProductsReq());
+    newProductList = await ProductApi.products(ProductsReq());
+
+    // 保存之前的首页JSON数据:
+    saveHomeJSONData();
 
     update(["home"]);
+  }
+
+  Future<void> _loadCacheData() async {
+    var bannerJson = Storage().getString(Constants.storageHomeBanner);
+    var categoriesJson = Storage().getString(Constants.storageHomeCategories);
+    var flashSellJson = Storage().getString(Constants.storageHomeFlashSell);
+    var newSellJson = Storage().getString(Constants.storageHomeNewSell);
+    bannerItems = bannerJson.isNotEmpty
+        ? jsonDecode(bannerJson).map<KeyValueModel>((item) {
+            return KeyValueModel.fromJson(item);
+          }).toList()
+        : [];
+
+    categoryItems = categoriesJson.isNotEmpty
+        ? jsonDecode(categoriesJson).map<CategoryModel>((item) {
+            return CategoryModel.fromJson(item);
+          }).toList()
+        : [];
+
+    flashSellList = flashSellJson.isNotEmpty
+        ? jsonDecode(flashSellJson).map<ProductModel>((item) {
+            return ProductModel.fromJson(item);
+          }).toList()
+        : [];
+
+    newProductList = newSellJson.isNotEmpty
+        ? jsonDecode(newSellJson).map<ProductModel>((item) {
+            return ProductModel.fromJson(item);
+          }).toList()
+        : [];
   }
 
   /// 拉取最新商品数据:
@@ -66,13 +109,13 @@ class HomeController extends GetxController {
     // 下拉刷新:
     if (isRefresh) {
       _page = 1;
-      latestProductList.clear();
+      newProductList.clear();
     }
 
     // 有数据:
     if (result.isNotEmpty) {
       _page++;
-      latestProductList.addAll(result);
+      newProductList.addAll(result);
     }
 
     return result.isEmpty;
@@ -80,7 +123,7 @@ class HomeController extends GetxController {
 
   /// 上拉加载更多新商品的数据:
   void onLoading() async {
-    if (latestProductList.isNotEmpty) {
+    if (newProductList.isNotEmpty) {
       try {
         var isEmpty = await _loadNewsSell(false);
         if (isEmpty) {
@@ -114,5 +157,13 @@ class HomeController extends GetxController {
     super.dispose();
 
     refreshController.dispose();
+  }
+
+  /// 保存首页JSON数据缓存:
+  void saveHomeJSONData() {
+    Storage().setJson(Constants.storageHomeBanner, bannerItems);
+    Storage().setJson(Constants.storageHomeCategories, categoryItems);
+    Storage().setJson(Constants.storageHomeFlashSell, flashSellList);
+    Storage().setJson(Constants.storageHomeNewSell, newProductList);
   }
 }

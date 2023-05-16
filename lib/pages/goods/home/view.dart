@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_woo_commerce/common/index.dart';
+import 'package:flutter_woo_commerce/pages/goods/home/widgets/list_title.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -37,7 +38,7 @@ class HomePage extends GetView<HomeController> {
 
   // 主视图
   Widget _buildView() {
-    return (controller.recommendProductList.isEmpty || controller.latestProductList.isEmpty)
+    return (controller.flashSellList.isEmpty || controller.newProductList.isEmpty)
         ? const PlaceholderWidget()
         : CustomScrollView(
             slivers: <Widget>[
@@ -46,16 +47,16 @@ class HomePage extends GetView<HomeController> {
               // 分类导航:
               _buildCategories(),
               // 推荐商品:
-              if (controller.recommendProductList.isNotEmpty) _buildSectionTitleWithTitle(LocaleKeys.gHomeFlashSell.tr),
+              if (controller.flashSellList.isNotEmpty) _buildSectionTitleWithTitle(LocaleKeys.gHomeFlashSell.tr),
               // 推荐商品列表:
-              controller.recommendProductList.isNotEmpty
-                  ? _buildRecommendProductList(controller.recommendProductList)
+              controller.flashSellList.isNotEmpty
+                  ? _buildFlashSellList(controller.flashSellList)
                   : const SliverToBoxAdapter(),
               // 最新商品:
-              if (controller.latestProductList.isNotEmpty) _buildSectionTitleWithTitle(LocaleKeys.gHomeNewProduct.tr),
+              if (controller.newProductList.isNotEmpty) _buildSectionTitleWithTitle(LocaleKeys.gHomeNewProduct.tr),
               // 最新商品列表:
-              controller.latestProductList.isNotEmpty
-                  ? _buildLatestProductList(controller.latestProductList)
+              controller.newProductList.isNotEmpty
+                  ? _buildLatestProductList(controller.newProductList)
                   : const SliverToBoxAdapter(),
             ],
           );
@@ -129,11 +130,14 @@ class HomePage extends GetView<HomeController> {
 
   /// 商品列表的标题栏:
   Widget _buildSectionTitleWithTitle(String title) {
-    return Text(title).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page);
+    return BuildListTitle(
+      title: title,
+      onTap: () => controller.onAllBarTap(false),
+    ).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page);
   }
 
   // 推荐商品列表:
-  Widget _buildRecommendProductList(List<ProductModel> productList) {
+  Widget _buildFlashSellList(List<ProductModel> productList) {
     return <Widget>[
       for (var i = 0; i < productList.length; i++)
         ProductItemWidget(
@@ -164,14 +168,14 @@ class HomePage extends GetView<HomeController> {
         return SliverGrid(
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int position) {
-              var product = controller.latestProductList[position];
+              var product = controller.newProductList[position];
               return ProductItemWidget(
                 product,
                 imgHeight: 170.w,
               );
             },
             // 显示个数:
-            childCount: controller.latestProductList.length,
+            childCount: controller.newProductList.length,
           ),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
