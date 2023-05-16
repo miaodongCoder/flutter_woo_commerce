@@ -49,7 +49,15 @@ class HomeController extends GetxController {
 
   /// `全部`按钮点击事件:
   /// featured: 是否为推荐商品~
-  void onAllBarTap(bool featured) {}
+  void onAllTap(bool featured) {
+    Get.toNamed(
+      RouteNames.goodsProductList,
+      // 是否为推荐商品:
+      arguments: {
+        "featured": featured,
+      },
+    );
+  }
 
   _initData() async {
     // 轮播图:

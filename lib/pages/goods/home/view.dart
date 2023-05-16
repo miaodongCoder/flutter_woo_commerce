@@ -132,7 +132,7 @@ class HomePage extends GetView<HomeController> {
   Widget _buildSectionTitleWithTitle(String title) {
     return BuildListTitle(
       title: title,
-      onTap: () => controller.onAllBarTap(false),
+      onTap: () => controller.onAllTap(false),
     ).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page);
   }
 
