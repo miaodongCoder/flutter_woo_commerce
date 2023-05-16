@@ -10,7 +10,7 @@ class ProductListController extends GetxController {
   final RefreshController refreshController = RefreshController(initialRefresh: true);
   // 商品数据源数组:
   List<ProductModel> items = [];
-  int _page = 0;
+  int _page = 1;
   final int _limit = 20;
 
   ProductListController();
@@ -64,7 +64,7 @@ class ProductListController extends GetxController {
     return result.isEmpty;
   }
 
-// 上拉载入新商品
+  // 上拉载入新商品
   void onLoading() async {
     if (items.isNotEmpty) {
       try {
