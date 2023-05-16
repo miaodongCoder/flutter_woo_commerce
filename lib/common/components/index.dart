@@ -8,3 +8,4 @@ export 'page_title.dart';
 export 'category_item.dart';
 export 'product_item.dart';
 export 'refresher.dart';
+export 'placholder.dart';

@@ -37,26 +37,28 @@ class HomePage extends GetView<HomeController> {
 
   // 主视图
   Widget _buildView() {
-    return CustomScrollView(
-      slivers: <Widget>[
-        // 轮播广告:
-        _buildBanner(),
-        // 分类导航:
-        _buildCategories(),
-        // 推荐商品:
-        if (controller.recommendProductList.isNotEmpty) _buildSectionTitleWithTitle(LocaleKeys.gHomeFlashSell.tr),
-        // 推荐商品列表:
-        controller.recommendProductList.isNotEmpty
-            ? _buildRecommendProductList(controller.recommendProductList)
-            : const SliverToBoxAdapter(),
-        // 最新商品:
-        if (controller.latestProductList.isNotEmpty) _buildSectionTitleWithTitle(LocaleKeys.gHomeNewProduct.tr),
-        // 最新商品列表:
-        controller.latestProductList.isNotEmpty
-            ? _buildLatestProductList(controller.latestProductList)
-            : const SliverToBoxAdapter(),
-      ],
-    );
+    return (controller.recommendProductList.isEmpty || controller.latestProductList.isEmpty)
+        ? const PlaceholderWidget()
+        : CustomScrollView(
+            slivers: <Widget>[
+              // 轮播广告:
+              _buildBanner(),
+              // 分类导航:
+              _buildCategories(),
+              // 推荐商品:
+              if (controller.recommendProductList.isNotEmpty) _buildSectionTitleWithTitle(LocaleKeys.gHomeFlashSell.tr),
+              // 推荐商品列表:
+              controller.recommendProductList.isNotEmpty
+                  ? _buildRecommendProductList(controller.recommendProductList)
+                  : const SliverToBoxAdapter(),
+              // 最新商品:
+              if (controller.latestProductList.isNotEmpty) _buildSectionTitleWithTitle(LocaleKeys.gHomeNewProduct.tr),
+              // 最新商品列表:
+              controller.latestProductList.isNotEmpty
+                  ? _buildLatestProductList(controller.latestProductList)
+                  : const SliverToBoxAdapter(),
+            ],
+          );
   }
 
   // 导航栏:

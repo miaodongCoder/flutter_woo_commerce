@@ -94,7 +94,7 @@ class HomeController extends GetxController {
     } else {
       refreshController.loadNoData();
     }
-    
+
     update(["home_news_sell"]);
   }
 
