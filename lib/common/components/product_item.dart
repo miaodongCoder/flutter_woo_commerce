@@ -48,7 +48,9 @@ class ProductItemWidget extends StatelessWidget {
       // 描述
       <Widget>[
         // 标题
-        TextWidget.body2(product.name ?? ""),
+        TextWidget.body2(
+          product.name ?? "",
+        ),
 
         // 价格
         if (product.price != null)
@@ -61,7 +63,7 @@ class ProductItemWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
           )
-          .paddingHorizontal(5)
+          .padding(left: 5)
           .expanded(),
     ];
 

@@ -67,6 +67,9 @@ dependencies:
   flutter_easyloading: ^3.0.5
   # 密码AES加密:
   encrypt: ^5.0.1
+  # 刷新控件:
+  pull_to_refresh: ^2.0.0
+
 
 
 

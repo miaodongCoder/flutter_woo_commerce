@@ -3,6 +3,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_woo_commerce/global.dart';
 import 'package:get/route_manager.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'common/index.dart';
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       // 是否根据宽度高度中的最小值适配文字:
       minTextAdapt: false,
       builder: (context, child) {
-        return GetMaterialApp(
+        Widget child = GetMaterialApp(
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: ConfigService.to.isDarkModel ? AppTheme.dark : AppTheme.light,
@@ -49,6 +50,16 @@ class MyApp extends StatelessWidget {
               child: widget,
             );
           },
+        );
+
+        return RefreshConfiguration(
+          headerBuilder: () => const ClassicHeader(), // 自定义刷新头部
+          footerBuilder: () => const ClassicFooter(), // 自定义刷新尾部
+          hideFooterWhenNotFull: true, // 当列表不满一页时,是否隐藏刷新尾部
+          headerTriggerDistance: 80, // 触发刷新的距离
+          maxOverScrollExtent: 100, // 最大的拖动距离
+          footerTriggerDistance: 150, // 触发加载的距离
+          child: child,
         );
       },
     );
