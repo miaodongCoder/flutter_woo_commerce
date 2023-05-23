@@ -10,3 +10,4 @@ export 'product_item.dart';
 export 'refresher.dart';
 export 'placholder.dart';
 export 'appbar.dart';
+export 'gallery.dart';
