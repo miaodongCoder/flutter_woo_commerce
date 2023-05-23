@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_woo_commerce/common/index.dart';
@@ -123,13 +124,49 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
         .paddingAll(AppSpace.page);
   }
 
-  // Tab 栏位
+  // Tab 栏位:
   Widget _buildTabBar() {
-    return const Text("Tab 栏位");
+    return GetBuilder(
+      init: ProductDetailsController(),
+      tag: tag,
+      id: "product_tab",
+      builder: (controller) {
+        return <Widget>[
+          for (int i = 0; i < controller.tabTitles.length; i++) _buildTabBarItem(controller.tabTitles[i], i),
+        ].toRow(
+          mainAxisAlignment: MainAxisAlignment.center,
+        );
+      },
+    );
+  }
+
+  Widget _buildTabBarItem(String textString, int index) {
+    return ButtonWidget.textFilled(
+      textString,
+      onTap: () => controller.onChangeTabController(index),
+      borderRadius: 17,
+      textColor: controller.tabIndex == index ? AppColors.onPrimary : AppColors.secondary,
+      bgColor: controller.tabIndex == index ? AppColors.primary : Colors.transparent,
+    ).tight(
+      width: 100.w,
+      height: 35.h,
+    );
   }
 
   // TabView 视图
   Widget _buildTabView() {
-    return const Text("TabView 视图");
+    return TabBarView(
+      controller: controller.tabController,
+      physics: const BouncingScrollPhysics(),
+      dragStartBehavior: DragStartBehavior.down,
+      children: [
+        // 规格
+        TabProductView(uniqueTag: uniqueTag),
+        // 详情
+        TabDetailView(uniqueTag: uniqueTag),
+        // 评论
+        TabReviewsView(uniqueTag: uniqueTag),
+      ],
+    ).paddingHorizontal(20.w).expanded();
   }
 }

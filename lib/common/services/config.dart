@@ -58,8 +58,7 @@ class ConfigService extends GetxService {
     Get.changeTheme(
       _isDarkModel.value == true ? AppTheme.dark : AppTheme.light,
     );
-    await Storage().setString(Constants.storageThemeCode,
-        _isDarkModel.value == true ? "dark" : "light");
+    await Storage().setString(Constants.storageThemeCode, _isDarkModel.value == true ? "dark" : "light");
   }
 
   // 初始化主题:
@@ -72,6 +71,5 @@ class ConfigService extends GetxService {
   }
 
   /// 标记已打开App:
-  set isAlreadyOpen(bool already) =>
-      Storage().setBool(Constants.storageAlreadyOpen, already);
+  set isAlreadyOpen(bool already) => Storage().setBool(Constants.storageAlreadyOpen, already);
 }
