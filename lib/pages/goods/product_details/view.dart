@@ -93,7 +93,34 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
 
   // 商品标题
   Widget _buildTitle() {
-    return const Text("商品标题");
+    return <Widget>[
+      // 金额、打分、喜欢:
+      <Widget>[
+        // 金额:
+        TextWidget.title1(
+          "💰 ${controller.productModel?.price ?? 0}",
+        ).expanded(),
+        // 打分:
+        const IconTextWidget(
+          iconData: Icons.star,
+          text: "4.5",
+        ).paddingRight(AppSpace.iconTextSmail),
+        // 喜欢:
+        const IconTextWidget(
+          iconData: Icons.favorite,
+          text: "100 +",
+        ),
+      ].toRow(),
+      // 次标题:
+      TextWidget.body1(
+        controller.productModel?.shortDescription?.clearHtml ?? "-",
+      ),
+    ]
+        .toColumn(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        )
+        .paddingAll(AppSpace.page);
   }
 
   // Tab 栏位
