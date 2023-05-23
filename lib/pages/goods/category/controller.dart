@@ -16,7 +16,9 @@ class CategoryController extends GetxController {
   final RefreshController refreshController = RefreshController(initialRefresh: true);
   // 商品数据源数组:
   List<ProductModel> items = [];
+  // 页码:
   int _page = 1;
+  // 每一页多少个item数据:
   final int _limit = 20;
 
   CategoryController();
@@ -43,7 +45,7 @@ class CategoryController extends GetxController {
           }).toList()
         : [];
 
-    // 如果本地缓存空
+    // 如果本地缓存空: 因为有的时候启动App不是按顺序进来的页面 , 有可能是其它的活动页进来的;
     if (categoryItems.isEmpty) {
       categoryItems = await ProductApi.categories(); // 获取分类数据
     }
@@ -51,8 +53,9 @@ class CategoryController extends GetxController {
     update(["left_nav"]);
   }
 
-  // 分类点击事件
+  // 已经进入分类菜单页,点击其他分类菜单分类点击事件
   void onCategoryTap(int id) async {
+    if (categoryId == id) return;
     categoryId = id;
     refreshController.requestRefresh();
     update(["left_nav"]);
@@ -82,6 +85,8 @@ class CategoryController extends GetxController {
 
       // 添加数据
       items.addAll(result);
+      items.addAll(result);
+      items.addAll(result);
     }
 
     // 是否空
@@ -94,7 +99,7 @@ class CategoryController extends GetxController {
       try {
         // 拉取数据是否为空
         var isEmpty = await _loadSearch(false);
-
+        // isEmpty请求完周自动回给数据源添加数据 , 这里完全不用操作数据源 , 只需根据数据源的有无数据的情况来调整显示逻辑即可!
         if (isEmpty) {
           // 设置无数据
           refreshController.loadNoData();
