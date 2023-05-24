@@ -39,4 +39,21 @@ class ProductApi {
     );
     return ProductModel.fromJson(res.data);
   }
+
+  /// 属性列表
+  /// id 1颜色, 2.尺寸:
+  static Future<List<AttributeModel>> attributes(int id) async {
+    var res = await WPHttpService.to.get(
+      '/products/attributes/$id/terms',
+    );
+
+    List<AttributeModel> attributes = [];
+    for (var item in res.data) {
+      attributes.add(AttributeModel.fromJson(item));
+    }
+
+    // 从小到大排序:
+    attributes.sort(((a, b) => a.menuOrder!.compareTo(b.menuOrder!)));
+    return attributes;
+  }
 }

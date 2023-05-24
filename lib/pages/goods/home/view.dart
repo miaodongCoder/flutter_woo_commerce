@@ -38,7 +38,8 @@ class HomePage extends GetView<HomeController> {
 
   // 主视图
   Widget _buildView() {
-    return (controller.flashSellList.isEmpty || controller.newProductList.isEmpty)
+    return (controller.flashSellList.isEmpty ||
+            controller.newProductList.isEmpty)
         ? const PlaceholderWidget()
         : CustomScrollView(
             slivers: <Widget>[
@@ -47,13 +48,15 @@ class HomePage extends GetView<HomeController> {
               // 分类导航:
               _buildCategories(),
               // 推荐商品:
-              if (controller.flashSellList.isNotEmpty) _buildSectionTitleWithTitle(LocaleKeys.gHomeFlashSell.tr),
+              if (controller.flashSellList.isNotEmpty)
+                _buildSectionTitleWithTitle(LocaleKeys.gHomeFlashSell.tr),
               // 推荐商品列表:
               controller.flashSellList.isNotEmpty
                   ? _buildFlashSellList(controller.flashSellList)
                   : const SliverToBoxAdapter(),
               // 最新商品:
-              if (controller.newProductList.isNotEmpty) _buildSectionTitleWithTitle(LocaleKeys.gHomeNewProduct.tr),
+              if (controller.newProductList.isNotEmpty)
+                _buildSectionTitleWithTitle(LocaleKeys.gHomeNewProduct.tr),
               // 最新商品列表:
               controller.newProductList.isNotEmpty
                   ? _buildLatestProductList(controller.newProductList)
@@ -109,7 +112,10 @@ class HomePage extends GetView<HomeController> {
           height: 190.w,
         );
       },
-    ).clipRRect(all: AppSpace.button).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page);
+    )
+        .clipRRect(all: AppSpace.button)
+        .sliverToBoxAdapter()
+        .sliverPaddingHorizontal(AppSpace.page);
   }
 
   // 分类导航横滑列表:
@@ -184,7 +190,9 @@ class HomePage extends GetView<HomeController> {
             crossAxisSpacing: AppSpace.listItem,
             childAspectRatio: 0.8,
           ),
-        ).sliverPadding(bottom: AppSpace.page).sliverPaddingHorizontal(AppSpace.page);
+        )
+            .sliverPadding(bottom: AppSpace.page)
+            .sliverPaddingHorizontal(AppSpace.page);
       },
     );
   }

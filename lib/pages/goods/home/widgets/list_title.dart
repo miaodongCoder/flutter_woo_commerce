@@ -14,7 +14,9 @@ class BuildListTitle extends StatelessWidget {
   /// 更多点击事件
   final Function()? onTap;
 
-  const BuildListTitle({Key? key, required this.title, this.subTitle, this.onTap}) : super(key: key);
+  const BuildListTitle(
+      {Key? key, required this.title, this.subTitle, this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -17,7 +17,8 @@ class HomeController extends GetxController {
   // 最新商品列表数据:
   List<ProductModel> newProductList = [];
   // 刷新控制器:
-  final RefreshController refreshController = RefreshController(initialRefresh: true);
+  final RefreshController refreshController =
+      RefreshController(initialRefresh: true);
   int _page = 1;
   final int _limit = 20;
 

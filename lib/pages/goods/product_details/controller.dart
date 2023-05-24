@@ -19,6 +19,15 @@ class ProductDetailsController extends GetxController with GetSingleTickerProvid
   List<KeyValueModel> bannerItems = [];
   int bannerCurrentIndex = 0;
 
+  // 颜色列表:
+  List<KeyValueModel<AttributeModel>> colors = [];
+  // 选中的颜色列表:
+  List<String> colorKeys = [];
+  // 尺寸列表
+  List<KeyValueModel<AttributeModel>> sizes = [];
+  // 选中尺寸列表
+  List<String> sizeKeys = [];
+
   @override
   void onReady() {
     super.onReady();
@@ -28,6 +37,7 @@ class ProductDetailsController extends GetxController with GetSingleTickerProvid
   @override
   void onClose() {
     super.onClose();
+    tabController.removeListener(() {});
     tabController.dispose();
   }
 
@@ -39,10 +49,14 @@ class ProductDetailsController extends GetxController with GetSingleTickerProvid
       animationDuration: const Duration(milliseconds: 500),
     );
 
-    tabController.addListener(() {
-      onChangeTabController(tabController.index);
-    });
+    await _loadColorAttributes();
+    await _loadSizeAttributes();
 
+    /// 页面手动滑动会走这个监听回调:
+    tabController.addListener(() {
+      tabIndex = tabController.index;
+      update(["product_tab"]);
+    });
     update(["product_details"]);
   }
 
@@ -57,6 +71,46 @@ class ProductDetailsController extends GetxController with GetSingleTickerProvid
               ))
           .toList();
     }
+
+    // 初始一个默认的选中颜色、尺寸:
+    if (productModel?.attributes != null) {
+      // 颜色
+      var colorAttr = productModel?.attributes?.where((e) => e.name == "Color");
+      if (colorAttr?.isNotEmpty == true) {
+        colorKeys = colorAttr?.first.options ?? [];
+      }
+      // 尺寸
+      var sizeAttr = productModel?.attributes?.where((e) => e.name == "Size");
+      if (sizeAttr?.isNotEmpty == true) {
+        sizeKeys = sizeAttr?.first.options ?? [];
+      }
+    }
+  }
+
+  _loadColorAttributes() async {
+    List<AttributeModel> attributeColors = await ProductApi.attributes(1);
+    colors = attributeColors.map((AttributeModel attr) {
+      return KeyValueModel(key: attr.name ?? "noColorKey", value: attr);
+    }).toList();
+  }
+
+  _loadSizeAttributes() async {
+    // 基础数据
+    // 尺寸
+    List<AttributeModel> attributeSizes = await ProductApi.attributes(2);
+    sizes = attributeSizes.map((AttributeModel attr) {
+      return KeyValueModel(key: attr.name ?? "noSizeKey", value: attr);
+    }).toList();
+  }
+
+  void onColorTap(List<String> keys) {
+    colorKeys = keys;
+    update(["product_colors"]);
+  }
+
+  void onSizeTap(List<String> keys) {
+    sizeKeys = keys;
+    update(["product_sizes"]);
   }
 
   void onChangeBannner(int index, CarouselPageChangedReason reason) {

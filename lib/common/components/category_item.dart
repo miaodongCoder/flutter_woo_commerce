@@ -38,7 +38,9 @@ class CategoryListItemWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
         )
         .paddingVertical(AppSpace.button)
-        .backgroundColor(selectId == category.id ? AppColors.onSurfaceVariant : Colors.transparent)
+        .backgroundColor(selectId == category.id
+            ? AppColors.onSurfaceVariant
+            : Colors.transparent)
         .onTap(() {
       if (onTap == null) return;
       if (category.id == null) return;

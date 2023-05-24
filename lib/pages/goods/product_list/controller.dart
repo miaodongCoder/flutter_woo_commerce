@@ -7,7 +7,8 @@ class ProductListController extends GetxController {
   // 是否推荐商品:
   final bool featured = Get.arguments['featured'] ?? false;
 
-  final RefreshController refreshController = RefreshController(initialRefresh: true);
+  final RefreshController refreshController =
+      RefreshController(initialRefresh: true);
   // 商品数据源数组:
   List<ProductModel> items = [];
   int _page = 1;

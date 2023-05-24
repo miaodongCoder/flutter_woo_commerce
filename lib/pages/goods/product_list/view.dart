@@ -17,7 +17,9 @@ class ProductListPage extends GetView<ProductListController> {
       builder: (_) {
         return Scaffold(
           appBar: mainAppBarWidget(
-            titleString: controller.featured == true ? LocaleKeys.gFlashSellTitle.tr : LocaleKeys.gNewsTitle.tr,
+            titleString: controller.featured == true
+                ? LocaleKeys.gFlashSellTitle.tr
+                : LocaleKeys.gNewsTitle.tr,
           ),
           body: SmartRefresher(
             controller: controller.refreshController, // 刷新控制器

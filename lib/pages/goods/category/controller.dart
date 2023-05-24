@@ -13,7 +13,8 @@ class CategoryController extends GetxController {
   // 分类导航数据
   List<CategoryModel> categoryItems = [];
 
-  final RefreshController refreshController = RefreshController(initialRefresh: true);
+  final RefreshController refreshController =
+      RefreshController(initialRefresh: true);
   // 商品数据源数组:
   List<ProductModel> items = [];
   // 页码:
@@ -38,7 +39,8 @@ class CategoryController extends GetxController {
   // 初始数据
   _initData() async {
     // 读缓存
-    var stringCategories = Storage().getString(Constants.storageProductsCategories);
+    var stringCategories =
+        Storage().getString(Constants.storageProductsCategories);
     categoryItems = stringCategories != ""
         ? jsonDecode(stringCategories).map<CategoryModel>((item) {
             return CategoryModel.fromJson(item);
