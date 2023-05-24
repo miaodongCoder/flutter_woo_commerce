@@ -503,7 +503,7 @@ extension ExWidget on Widget {
       GestureDetector(
         key: key,
         onTap: onTap,
-        behavior: behavior ?? HitTestBehavior.opaque,
+        behavior: behavior ?? HitTestBehavior.opaque, // 防止时间穿透~
         excludeFromSemantics: excludeFromSemantics,
         dragStartBehavior: dragStartBehavior,
         child: this,

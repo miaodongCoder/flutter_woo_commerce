@@ -1,5 +1,6 @@
 import '../index.dart';
 import '../models/request/product.dart';
+import '../models/woo/review_model/review_model.dart';
 
 /// 商品 api
 class ProductApi {
@@ -55,5 +56,19 @@ class ProductApi {
     // 从小到大排序:
     attributes.sort(((a, b) => a.menuOrder!.compareTo(b.menuOrder!)));
     return attributes;
+  }
+
+  /// 评论列表
+  static Future<List<ReviewModel>> reviews(ReviewsReq? req) async {
+    var res = await WPHttpService.to.get(
+      '/products/reviews',
+      params: req?.toJson(),
+    );
+
+    List<ReviewModel> reviews = [];
+    for (var item in res.data) {
+      reviews.add(ReviewModel.fromJson(item));
+    }
+    return reviews;
   }
 }

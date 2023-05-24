@@ -27,7 +27,9 @@ class AttributeModel {
       description: json['description'] as String?,
       menuOrder: json['menu_order'] as int?,
       count: json['count'] as int?,
-      links: json['_links'] == null ? null : Links.fromJson(json['_links'] as Map<String, dynamic>),
+      links: json['_links'] == null
+          ? null
+          : Links.fromJson(json['_links'] as Map<String, dynamic>),
     );
   }
 

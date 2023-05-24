@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_woo_commerce/common/index.dart';
 import 'package:flutter_woo_commerce/pages/index.dart';
-import 'package:flutter_woo_commerce/pages/system/main/widgets/navigation.dart';
 import 'package:get/get.dart';
 
 class MainPage extends StatefulWidget {

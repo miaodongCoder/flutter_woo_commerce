@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_woo_commerce/common/index.dart';
 import 'package:get/get.dart';
+
+import '../index.dart';
 
 class NavigationItemModel {
   final String label;
@@ -46,11 +47,16 @@ class BuildNavigation extends StatelessWidget {
           ),
         ]
             .toColumn(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center, // 居中
+              mainAxisSize: MainAxisSize.max, // 撑满
             )
             .onTap(() => onTap(i))
             .expanded(),
       );
+
+      // mainAxisSize: MainAxisSize.max, // 撑满
+      // mainAxisAlignment: MainAxisAlignment.center, // 居中
+      // onTap 中已经是 behavior: behavior ?? HitTestBehavior.opaque, 防事件穿透
     }
 
     return BottomAppBar(
