@@ -33,7 +33,16 @@ class ProductDetailsController extends GetxController with GetSingleTickerProvid
 
   _initData() async {
     await _loadProduct();
-    tabController = TabController(length: tabTitles.length, vsync: this);
+    tabController = TabController(
+      length: tabTitles.length,
+      vsync: this,
+      animationDuration: const Duration(milliseconds: 500),
+    );
+
+    tabController.addListener(() {
+      onChangeTabController(tabController.index);
+    });
+
     update(["product_details"]);
   }
 
