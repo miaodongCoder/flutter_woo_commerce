@@ -60,7 +60,7 @@ class SearchIndexPage extends GetView<SearchIndexController> {
         Icons.north_west,
         color: AppColors.primary,
       ),
-      onTap: () => controller.onListItemTap(item),
+      onTap: () => controller.onListItemClicked(item),
     );
   }
 }

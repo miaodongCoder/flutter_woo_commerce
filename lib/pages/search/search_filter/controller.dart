@@ -24,4 +24,8 @@ class SearchFilterController extends GetxController {
   // void onClose() {
   //   super.onClose();
   // }
+
+  void back() {
+    Get.back();
+  }
 }

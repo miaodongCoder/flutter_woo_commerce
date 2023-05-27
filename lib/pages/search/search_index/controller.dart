@@ -66,9 +66,15 @@ class SearchIndexController extends GetxController {
     return tagsList.isEmpty;
   }
 
-  // 列表项点击:
-  void onListItemTap(TagsModel model) {
+  // 列表项点击事件:
+  void onListItemClicked(TagsModel model) {
     if (model.name == null) return;
     searchEditingController.text = model.name!;
+    // 这里稍微给一个延时的效果, 让文字先赋值再去接跳转:
+    Future.delayed(const Duration(milliseconds: 400), () {
+      Get.toNamed(RouteNames.searchSearchFilter, arguments: {
+        "tagId": model.id ?? "Error TagId",
+      });
+    });
   }
 }
