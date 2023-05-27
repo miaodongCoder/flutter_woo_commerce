@@ -71,7 +71,8 @@ class TabReviewsView extends GetView<ProductDetailsController> {
           ),
           // 时间:
           TextWidget.body2(
-            DateTime.parse(item.dateCreated ?? "").toDateString(format: 'yyyy .MM .dd'),
+            DateTime.parse(item.dateCreated ?? "")
+                .toDateString(format: 'yyyy .MM .dd'),
           ),
         ].toRow(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

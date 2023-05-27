@@ -18,7 +18,7 @@ class HomeController extends GetxController {
   List<ProductModel> newProductList = [];
   // 刷新控制器:
   final RefreshController refreshController =
-      RefreshController(initialRefresh: true);
+      RefreshController(initialRefresh: false);
   int _page = 1;
   final int _limit = 20;
 
@@ -49,8 +49,10 @@ class HomeController extends GetxController {
     });
   }
 
-  /// 导航点击事件:
-  void onAppBarTap() {}
+  /// 搜索栏导航点击事件:
+  void onAppBarTap() {
+    Get.toNamed(RouteNames.searchSearchIndex);
+  }
 
   /// `全部`按钮点击事件:
   /// featured: 是否为推荐商品~
