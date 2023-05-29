@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_woo_commerce/common/index.dart';
 import 'package:get/get.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'index.dart';
 
@@ -47,8 +48,18 @@ class SearchFilterPage extends GetView<SearchFilterController> {
     return <Widget>[
       // 筛选栏
       _buildFilterBar(),
-      // 数据列表
-      _buildListView(),
+      SmartRefresher(
+        controller: controller.refreshController,
+        enablePullUp: true,
+        onRefresh: controller.onRefresh,
+        onLoading: controller.onLoading,
+        footer: const SmartRefresherFooterWidget(),
+        child: CustomScrollView(
+          slivers: <Widget>[
+            _buildListView().sliverPaddingHorizontal(AppSpace.button),
+          ],
+        ),
+      ).expanded(),
     ].toColumn();
   }
 
@@ -87,8 +98,35 @@ class SearchFilterPage extends GetView<SearchFilterController> {
     ].toRow();
   }
 
-  // 数据列表:
+  // 数据列表
   Widget _buildListView() {
-    return const Text("数据列表");
+    return GetBuilder<SearchFilterController>(
+      id: "filter_products",
+      builder: (_) {
+        return controller.items.isEmpty
+            ?
+            // 占位图
+            const PlaceholderWidget().sliverBox
+            :
+            // 商品列表:
+            SliverGrid.builder(
+                itemCount: controller.items.length, // 数据长度
+                itemBuilder: (context, index) {
+                  var product = controller.items[index]; // 商品项数据
+                  // 商品项组件
+                  return ProductItemWidget(
+                    product, // 商品
+                    imgHeight: 117.w, // 图片高度
+                  );
+                },
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3, // 每行3个
+                  mainAxisSpacing: AppSpace.listRow, // 主轴间距
+                  crossAxisSpacing: AppSpace.listItem, // 交叉轴间距
+                  childAspectRatio: 0.7, // 宽高比
+                ),
+              );
+      },
+    );
   }
 }

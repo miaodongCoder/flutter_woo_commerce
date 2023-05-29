@@ -1,4 +1,6 @@
 // 本地存储key:
+import '../index.dart';
+
 class Constants {
   // 多语言编码:
   static const storageLanguageCode = 'language_code';
@@ -24,10 +26,16 @@ class Constants {
   // 基础数据
   // 商品分类
   static const storageProductsCategories = 'home_categories';
-
   // 颜色定义
   static const storageProductsAttributesColors = 'products_attributes_colors';
-
   // 尺寸定义
   static const storageProductsAttributesSizes = 'products_attributes_sizes';
+  // 品牌
+  static const storageProductsAttributesBrand = 'products_attributes_brand';
+  // 性别
+  static const storageProductsAttributesGender = 'products_attributes_gender';
+  // 新旧
+  static const storageProductsAttributesCondition = 'products_attributes_condition';
+
+  static const mockProductList = ProductList.mockProductList;
 }
