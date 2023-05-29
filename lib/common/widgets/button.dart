@@ -13,6 +13,7 @@ enum ButtonWidgetType {
   iconTextOutlined, // 图标/文字/边框
   iconTextUpDownOutlined, // 图标/文字/上下/边框
   textIcon, // 文字/图标
+  dropdown, // 文字/图标/两端对齐
 }
 
 /// 按钮
@@ -309,10 +310,12 @@ class ButtonWidget extends StatelessWidget {
         ));
       case ButtonWidgetType.iconTextOutlined:
       case ButtonWidgetType.iconTextUpDownOutlined:
-        return MaterialStateProperty.all(BorderSide(
-          color: borderColor ?? AppColors.outline,
-          width: 1,
-        ));
+        return MaterialStateProperty.all(
+          BorderSide(
+            color: borderColor ?? AppColors.outline,
+            width: 1,
+          ),
+        );
       default:
         return null;
     }
@@ -335,8 +338,7 @@ class ButtonWidget extends StatelessWidget {
       case ButtonWidgetType.secondary:
         return MaterialStateProperty.all(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-                Radius.circular(borderRadius ?? AppRadius.button)),
+            borderRadius: BorderRadius.all(Radius.circular(borderRadius ?? AppRadius.button)),
           ),
         );
       case ButtonWidgetType.textFilled:
@@ -344,10 +346,10 @@ class ButtonWidget extends StatelessWidget {
       case ButtonWidgetType.iconTextUpDownOutlined:
         return MaterialStateProperty.all(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-                Radius.circular(borderRadius ?? AppRadius.buttonTextFilled)),
+            borderRadius: BorderRadius.all(Radius.circular(borderRadius ?? AppRadius.buttonTextFilled)),
           ),
         );
+      case ButtonWidgetType.dropdown:
       case ButtonWidgetType.textRoundFilled:
         return MaterialStateProperty.all(
           RoundedRectangleBorder(
@@ -410,4 +412,34 @@ class ButtonWidget extends StatelessWidget {
       ),
     );
   }
+
+  /// 文字 / 图标 / dropdown
+  ButtonWidget.dropdown(
+    this.text,
+    this.icon, {
+    Key? key,
+    Color? textColor,
+    double? textSize,
+    FontWeight? textWeight,
+    this.type = ButtonWidgetType.dropdown,
+    this.onTap,
+    this.borderRadius = 0,
+    this.backgroundColor,
+    this.borderColor,
+    this.width,
+    this.height,
+  })  : child = <Widget>[
+          TextWidget.button(
+            text: text!,
+            size: textSize,
+            color: textColor ?? AppColors.onPrimaryContainer,
+            weight: textWeight,
+          ).expanded(),
+          icon!,
+        ]
+            .toRow(
+              mainAxisSize: MainAxisSize.min,
+            )
+            .paddingHorizontal(AppSpace.button),
+        super(key: key);
 }

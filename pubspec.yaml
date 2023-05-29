@@ -71,6 +71,9 @@ dependencies:
   pull_to_refresh: ^2.0.0
   # 图片预览:
   photo_view: ^0.14.0
+  # 下拉菜单:
+  dropdown_button2: ^2.1.3
+
 
 
 
