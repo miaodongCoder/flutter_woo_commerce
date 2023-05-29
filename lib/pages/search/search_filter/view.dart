@@ -8,7 +8,41 @@ import 'index.dart';
 class SearchFilterPage extends GetView<SearchFilterController> {
   const SearchFilterPage({Key? key}) : super(key: key);
 
-  // 主视图
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<SearchFilterController>(
+      init: SearchFilterController(),
+      id: "search_filter",
+      builder: (_) {
+        return Scaffold(
+          // Key:
+          key: controller.scaffoldKey,
+          // 导航:
+          appBar: mainAppBarWidget(
+            leading: ButtonWidget.icon(
+              IconWidget.icon(
+                Icons.arrow_back,
+                color: AppColors.primary,
+              ),
+              onTap: controller.back,
+            ),
+            hintText: LocaleKeys.searchPlaceholder.tr,
+            onTap: controller.back,
+          ),
+          // 内容:
+          body: SafeArea(
+            child: _buildView(),
+          ),
+          // 右侧弹出过滤消息盒子:
+          endDrawer: const Drawer(
+            child: SafeArea(child: FilterView()),
+          ),
+        );
+      },
+    );
+  }
+
+  // 主视图:
   Widget _buildView() {
     return <Widget>[
       // 筛选栏
@@ -56,31 +90,5 @@ class SearchFilterPage extends GetView<SearchFilterController> {
   // 数据列表:
   Widget _buildListView() {
     return const Text("数据列表");
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return GetBuilder<SearchFilterController>(
-      init: SearchFilterController(),
-      id: "search_filter",
-      builder: (_) {
-        return Scaffold(
-          appBar: mainAppBarWidget(
-            leading: ButtonWidget.icon(
-              IconWidget.icon(
-                Icons.arrow_back,
-                color: AppColors.primary,
-              ),
-              onTap: controller.back,
-            ),
-            hintText: LocaleKeys.searchPlaceholder.tr,
-            onTap: controller.back,
-          ),
-          body: SafeArea(
-            child: _buildView(),
-          ),
-        );
-      },
-    );
   }
 }

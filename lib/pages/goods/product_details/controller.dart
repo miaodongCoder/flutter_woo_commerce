@@ -6,8 +6,7 @@ import 'package:flutter_woo_commerce/common/models/woo/review_model/review_model
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-class ProductDetailsController extends GetxController
-    with GetSingleTickerProviderStateMixin {
+class ProductDetailsController extends GetxController with GetSingleTickerProviderStateMixin {
   late TabController tabController;
   List<String> tabTitles = [
     LocaleKeys.gDetailTabProduct.tr,
@@ -156,9 +155,7 @@ class ProductDetailsController extends GetxController
   void onGalleryTap(int index, KeyValueModel item) {
     Get.to(GalleryWidget(
       initialIndex: index,
-      items: bannerItems
-          .map<String>((KeyValueModel model) => model.value)
-          .toList(),
+      items: bannerItems.map<String>((KeyValueModel model) => model.value).toList(),
     ));
   }
 

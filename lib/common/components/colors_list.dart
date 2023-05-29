@@ -31,7 +31,7 @@ class ColorsListWidget extends StatelessWidget {
     this.onTap,
     required this.itemList,
     required this.keys,
-    this.size,
+    this.size = 24,
     this.spacing,
     this.runSpacing,
     this.borderSelectedColor,
