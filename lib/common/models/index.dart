@@ -13,5 +13,7 @@ export '../models/woo/category_model/category_model.dart';
 export 'woo/attribute_model/attribute_model.dart';
 export '../models/tags_model/tags_model.dart';
 export 'woo/order_model/order_model.dart';
+export './woo/continents_model/continents_model.dart';
+export './woo/continents_model/country.dart';
 
 export 'kv.dart';

@@ -51,13 +51,20 @@ class OrderModel {
         lastName: json['last_name'] as String?,
         role: json['role'] as String?,
         username: json['username'] as String?,
-        billing: json['billing'] == null ? null : Billing.fromJson(json['billing'] as Map<String, dynamic>),
-        shipping: json['shipping'] == null ? null : Shipping.fromJson(json['shipping'] as Map<String, dynamic>),
+        billing: json['billing'] == null
+            ? null
+            : Billing.fromJson(json['billing'] as Map<String, dynamic>),
+        shipping: json['shipping'] == null
+            ? null
+            : Shipping.fromJson(json['shipping'] as Map<String, dynamic>),
         isPayingCustomer: json['is_paying_customer'] as bool?,
         avatarUrl: json['avatar_url'] as String?,
-        metaData:
-            (json['meta_data'] as List<dynamic>?)?.map((e) => MetaDatum.fromJson(e as Map<String, dynamic>)).toList(),
-        links: json['_links'] == null ? null : Links.fromJson(json['_links'] as Map<String, dynamic>),
+        metaData: (json['meta_data'] as List<dynamic>?)
+            ?.map((e) => MetaDatum.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        links: json['_links'] == null
+            ? null
+            : Links.fromJson(json['_links'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {
