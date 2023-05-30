@@ -73,7 +73,8 @@ class ProductList {
           "date_created_gmt": "2022-03-31T15:19:42",
           "date_modified": "2022-04-01T07:19:42",
           "date_modified_gmt": "2022-03-31T15:19:42",
-          "src": "https://ducafecat.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2022/03/vneck-tee-2.jpg",
+          "src":
+              "https://ducafecat.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2022/03/vneck-tee-2.jpg",
           "name": "vneck-tee-2.jpg",
           "alt": ""
         },
@@ -83,7 +84,8 @@ class ProductList {
           "date_created_gmt": "2022-03-31T15:19:44",
           "date_modified": "2022-04-01T07:19:44",
           "date_modified_gmt": "2022-03-31T15:19:44",
-          "src": "https://ducafecat.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2022/03/vnech-tee-green-1.jpg",
+          "src":
+              "https://ducafecat.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2022/03/vnech-tee-green-1.jpg",
           "name": "vnech-tee-green-1.jpg",
           "alt": ""
         },
@@ -93,7 +95,8 @@ class ProductList {
           "date_created_gmt": "2022-03-31T15:19:47",
           "date_modified": "2022-04-01T07:19:47",
           "date_modified_gmt": "2022-03-31T15:19:47",
-          "src": "https://ducafecat.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2022/03/vnech-tee-blue-1.jpg",
+          "src":
+              "https://ducafecat.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2022/03/vnech-tee-blue-1.jpg",
           "name": "vnech-tee-blue-1.jpg",
           "alt": ""
         }
@@ -208,7 +211,8 @@ class ProductList {
           "date_created_gmt": "2022-03-31T15:19:57",
           "date_modified": "2022-04-01T07:19:57",
           "date_modified_gmt": "2022-03-31T15:19:57",
-          "src": "https://ducafecat.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2022/03/hoodie-with-logo-2.jpg",
+          "src":
+              "https://ducafecat.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2022/03/hoodie-with-logo-2.jpg",
           "name": "hoodie-with-logo-2.jpg",
           "alt": ""
         },
@@ -218,7 +222,8 @@ class ProductList {
           "date_created_gmt": "2022-03-31T15:19:55",
           "date_modified": "2022-04-01T07:19:55",
           "date_modified_gmt": "2022-03-31T15:19:55",
-          "src": "https://ducafecat.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2022/03/hoodie-green-1.jpg",
+          "src":
+              "https://ducafecat.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2022/03/hoodie-green-1.jpg",
           "name": "hoodie-green-1.jpg",
           "alt": ""
         },
@@ -228,7 +233,8 @@ class ProductList {
           "date_created_gmt": "2022-03-31T15:19:52",
           "date_modified": "2022-04-01T07:19:52",
           "date_modified_gmt": "2022-03-31T15:19:52",
-          "src": "https://ducafecat.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2022/03/hoodie-blue-1.jpg",
+          "src":
+              "https://ducafecat.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2022/03/hoodie-blue-1.jpg",
           "name": "hoodie-blue-1.jpg",
           "alt": ""
         },
@@ -238,7 +244,8 @@ class ProductList {
           "date_created_gmt": "2022-03-31T15:19:48",
           "date_modified": "2022-04-01T07:19:48",
           "date_modified_gmt": "2022-03-31T15:19:48",
-          "src": "https://ducafecat.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2022/03/hoodie-2.jpg",
+          "src":
+              "https://ducafecat.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2022/03/hoodie-2.jpg",
           "name": "hoodie-2.jpg",
           "alt": ""
         }
@@ -354,7 +361,8 @@ class ProductList {
           "date_created_gmt": "2022-03-31T15:19:59",
           "date_modified": "2022-04-01T07:19:59",
           "date_modified_gmt": "2022-03-31T15:19:59",
-          "src": "https://ducafecat.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2022/03/tshirt-2.jpg",
+          "src":
+              "https://ducafecat.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2022/03/tshirt-2.jpg",
           "name": "tshirt-2.jpg",
           "alt": ""
         }

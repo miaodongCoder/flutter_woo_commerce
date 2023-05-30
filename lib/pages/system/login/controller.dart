@@ -4,8 +4,10 @@ import 'package:flutter_woo_commerce/common/utils/encrypt.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  TextEditingController userNameController = TextEditingController(text: "ducafecat5");
-  TextEditingController passwordController = TextEditingController(text: "123456");
+  TextEditingController userNameController =
+      TextEditingController(text: "ducafecat5");
+  TextEditingController passwordController =
+      TextEditingController(text: "123456");
   GlobalKey formKey = GlobalKey<FormState>();
   LoginController();
 
@@ -28,7 +30,8 @@ class LoginController extends GetxController {
         String userName = userNameController.text;
         String password = EncryptUtil().aesEncode(passwordController.text);
         // 1.登录请求获取token:
-        UserLoginReq? req = UserLoginReq(username: userName, password: password);
+        UserLoginReq? req =
+            UserLoginReq(username: userName, password: password);
         UserTokenModel result = await UserApi.login(req);
         // 2.本地保存token:
         if (result.token == null) {

@@ -44,7 +44,8 @@ class SearchIndexPage extends GetView<SearchIndexController> {
   // 列表:
   Widget _buildList() {
     return ListView.separated(
-      itemBuilder: (context, index) => _buildListItem(controller.tagsList[index]),
+      itemBuilder: (context, index) =>
+          _buildListItem(controller.tagsList[index]),
       separatorBuilder: (context, index) => const Divider(),
       itemCount: controller.tagsList.length,
     );

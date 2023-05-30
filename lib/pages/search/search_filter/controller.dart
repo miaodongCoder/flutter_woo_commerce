@@ -18,7 +18,8 @@ class SearchFilterController extends GetxController {
   ];
 
   // 排序选中:
-  KeyValueModel orderSelected = KeyValueModel(key: "rating", value: "Best Match");
+  KeyValueModel orderSelected =
+      KeyValueModel(key: "rating", value: "Best Match");
 
   // 在view中给scaffold设置一个key , 然后拿到这个key之后用来空值它里面的抽屉盒子的开关属性:
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -52,7 +53,8 @@ class SearchFilterController extends GetxController {
   int? tagId = Get.arguments["tagId"] ?? "";
   // 数据源数组:
   List<ProductModel> items = [];
-  final RefreshController refreshController = RefreshController(initialRefresh: true);
+  final RefreshController refreshController =
+      RefreshController(initialRefresh: true);
   int _page = 1;
   final int _limit = 20;
   // 排序字段:
@@ -102,17 +104,20 @@ class SearchFilterController extends GetxController {
     Get.back();
   }
 
-  void onPriceRangeDragging(int handlerIndex, dynamic lowerValue, dynamic upperValue) {
+  void onPriceRangeDragging(
+      int handlerIndex, dynamic lowerValue, dynamic upperValue) {
     priceRange[0] = lowerValue as double;
     priceRange[1] = upperValue as double;
     update(["filter_price_range"]);
   }
 
   /// 请求属性的通用方法:
-  Future<List<KeyValueModel<AttributeModel>>> _loadAllFilterAttributesWithId(int id) async =>
+  Future<List<KeyValueModel<AttributeModel>>> _loadAllFilterAttributesWithId(
+          int id) async =>
       (await ProductApi.attributes(id))
           .map(
-            (AttributeModel attr) => KeyValueModel(key: attr.name ?? "errorKey", value: attr),
+            (AttributeModel attr) =>
+                KeyValueModel(key: attr.name ?? "errorKey", value: attr),
           )
           .toList();
 
@@ -174,7 +179,9 @@ class SearchFilterController extends GetxController {
 
     if (result.isEmpty) {
       const List<Map<String, dynamic>> resultList = Constants.mockProductList;
-      result = resultList.map((Map<String, dynamic> item) => ProductModel.fromJson(item)).toList();
+      result = resultList
+          .map((Map<String, dynamic> item) => ProductModel.fromJson(item))
+          .toList();
     }
 
     // 下拉刷新

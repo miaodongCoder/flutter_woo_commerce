@@ -32,27 +32,27 @@ class UserApi {
     return UserProfileModel.fromJson(res.data);
   }
 
-  /// 保存用户 billing address
-  // static Future<UserProfileModel> saveBillingAddress(Billing? req) async {
-  //   var res = await WPHttpService.to.put(
-  //     '/users/me',
-  //     data: {
-  //       "billing": req,
-  //     },
-  //   );
-  //   return UserProfileModel.fromJson(res.data);
-  // }
+  /// 保存用户订单发票地址: billing address
+  static Future<UserProfileModel> saveBillingAddress(Billing? req) async {
+    var res = await WPHttpService.to.put(
+      '/users/me',
+      data: {
+        "billing": req,
+      },
+    );
+    return UserProfileModel.fromJson(res.data);
+  }
 
-  /// 保存用户 shipping address
-  // static Future<UserProfileModel> saveShippingAddress(Shipping? req) async {
-  //   var res = await WPHttpService.to.put(
-  //     '/users/me',
-  //     data: {
-  //       "shipping": req,
-  //     },
-  //   );
-  //   return UserProfileModel.fromJson(res.data);
-  // }
+  /// 保存用户配送地址: shipping address
+  static Future<UserProfileModel> saveShippingAddress(Shipping? req) async {
+    var res = await WPHttpService.to.put(
+      '/users/me',
+      data: {
+        "shipping": req,
+      },
+    );
+    return UserProfileModel.fromJson(res.data);
+  }
 
   /// 大陆国家洲省列表
   // static Future<List<ContinentsModel>> continents() async {

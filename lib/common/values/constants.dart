@@ -35,7 +35,8 @@ class Constants {
   // 性别
   static const storageProductsAttributesGender = 'products_attributes_gender';
   // 新旧
-  static const storageProductsAttributesCondition = 'products_attributes_condition';
+  static const storageProductsAttributesCondition =
+      'products_attributes_condition';
 
   static const mockProductList = ProductList.mockProductList;
 }

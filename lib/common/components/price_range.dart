@@ -10,7 +10,8 @@ class PriceRangeWidget extends StatelessWidget {
   // 当前值:
   final List<double>? values;
   // 拖动事件:
-  final Function(int handlerIndex, dynamic lowerValue, dynamic upperValue)? onDragging;
+  final Function(int handlerIndex, dynamic lowerValue, dynamic upperValue)?
+      onDragging;
   // 最大值:
   final double? max;
   // 最小值:

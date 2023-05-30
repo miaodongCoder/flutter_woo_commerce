@@ -22,6 +22,7 @@ class MyIndexPage extends GetView<MyIndexController> {
         ButtonWidget.primary(
           LocaleKeys.myBtnLogout.tr,
           height: 60,
+          onTap: controller.onLogout,
         )
             .padding(
               top: AppSpace.page,
@@ -176,11 +177,66 @@ class MyIndexPage extends GetView<MyIndexController> {
 
   // My Order
   Widget _buildMyOrder() {
-    return const Text("My Order");
+    return ButtonItemWidget(
+      title: LocaleKeys.myBtnMyOrder.tr,
+      svgPath: AssetsSvgs.pDeliverySvg,
+      color: "4061FF".toColor,
+      onTap: () => Get.toNamed(RouteNames.myOrderList),
+    ).card().paddingVertical(AppSpace.page);
   }
 
   // 按钮列表
   Widget _buildButtonsList() {
-    return const Text("按钮列表");
+    return <Widget>[
+      // Edit Profile
+      ButtonItemWidget(
+        title: LocaleKeys.myBtnEditProfile.tr,
+        svgPath: AssetsSvgs.pCurrencySvg,
+        color: "4971FF".toColor,
+        onTap: () => Get.toNamed(RouteNames.myProfileEdit),
+      ),
+
+      // 账单地址: Billing Address:
+      ButtonItemWidget(
+        title: LocaleKeys.myBtnBillingAddress.tr,
+        svgPath: AssetsSvgs.pHomeSvg,
+        color: "F43284".toColor,
+        onTap: () => controller.onToAddress("Billing"), // 类型 Billing
+      ),
+
+      // 订单收货地址: Shipping Address:
+      ButtonItemWidget(
+        title: LocaleKeys.myBtnShippingAddress.tr,
+        svgPath: AssetsSvgs.pHomeSvg,
+        color: "5F84FF".toColor,
+        onTap: () => controller.onToAddress("Shipping"), // 类型 Shipping
+      ),
+
+      // Language
+      ButtonItemWidget(
+        title: LocaleKeys.myBtnLanguage.tr,
+        svgPath: AssetsSvgs.pTranslateSvg,
+        color: "41AA3D".toColor,
+        onTap: () => Get.toNamed(RouteNames.myLanguage),
+      ),
+
+      // Theme
+      ButtonItemWidget(
+        title: LocaleKeys.myBtnTheme.tr,
+        svgPath: AssetsSvgs.pThemeSvg,
+        color: "F89C52".toColor,
+        onTap: () => ConfigService.to.switchThemeModel(),
+      ),
+
+      // 调试工具
+      ButtonItemWidget(
+        title: LocaleKeys.myBtnStyles.tr,
+        svgPath: AssetsSvgs.pCurrencySvg,
+        color: "4971FF".toColor,
+        onTap: () => Get.toNamed(RouteNames.stylesStyleIndex),
+      ),
+
+      // end
+    ].toColumn().card().paddingBottom(30.h);
   }
 }

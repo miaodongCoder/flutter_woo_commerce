@@ -23,7 +23,9 @@ class TagsModel {
         slug: json['slug'] as String?,
         description: json['description'] as String?,
         count: json['count'] as int?,
-        links: json['_links'] == null ? null : Links.fromJson(json['_links'] as Map<String, dynamic>),
+        links: json['_links'] == null
+            ? null
+            : Links.fromJson(json['_links'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {

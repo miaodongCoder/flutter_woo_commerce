@@ -1,3 +1,5 @@
+import 'package:flutter_woo_commerce/common/index.dart';
+import 'package:flutter_woo_commerce/pages/index.dart';
 import 'package:get/get.dart';
 
 class MyIndexController extends GetxController {
@@ -7,12 +9,13 @@ class MyIndexController extends GetxController {
     update(["my_index"]);
   }
 
-  void onTap() {}
-
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  // }
+  // 注销:
+  void onLogout() {
+    // 登出:
+    UserService.to.logout();
+    // 跳转首页:
+    Get.find<MainController>().onJumpToPage(0);
+  }
 
   @override
   void onReady() {
@@ -20,8 +23,13 @@ class MyIndexController extends GetxController {
     _initData();
   }
 
-  // @override
-  // void onClose() {
-  //   super.onClose();
-  // }
+  // 地址编辑页 type 1 billing 2 shipping:
+  void onToAddress(String type) {
+    Get.toNamed(
+      RouteNames.myMyAddress,
+      arguments: {
+        "type": type,
+      },
+    );
+  }
 }
