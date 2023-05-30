@@ -29,6 +29,11 @@ class MainController extends GetxController {
   }
 
   void onJumpToPage(int page) {
+    if (page != 0 && !UserService.to.isLogin) {
+      Get.toNamed(RouteNames.systemLogin);
+      return;
+    }
+
     pageController.jumpToPage(page);
   }
 
