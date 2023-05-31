@@ -19,14 +19,11 @@ Map<String, String> localeZh = {
 
   // welcome 欢迎
   LocaleKeys.welcomeOneTitle: '选择您喜欢的产品',
-  LocaleKeys.welcomeOneDesc:
-      'Contrary to popular belief, Lorem Ipsum is not simply random text',
+  LocaleKeys.welcomeOneDesc: 'Contrary to popular belief, Lorem Ipsum is not simply random text',
   LocaleKeys.welcomeTwoTitle: '完成您的购物',
-  LocaleKeys.welcomeTwoDesc:
-      'Contrary to popular belief, Lorem Ipsum is not simply random text',
+  LocaleKeys.welcomeTwoDesc: 'Contrary to popular belief, Lorem Ipsum is not simply random text',
   LocaleKeys.welcomeThreeTitle: '足不出户的购物体验',
-  LocaleKeys.welcomeThreeDesc:
-      'Contrary to popular belief, Lorem Ipsum is not simply random text',
+  LocaleKeys.welcomeThreeDesc: 'Contrary to popular belief, Lorem Ipsum is not simply random text',
   LocaleKeys.welcomeSkip: '跳过',
   LocaleKeys.welcomeNext: '下一页',
   LocaleKeys.welcomeStart: '立刻开始',
@@ -136,4 +133,13 @@ Map<String, String> localeZh = {
   LocaleKeys.addressCompany: '国家',
   LocaleKeys.addressPhoneNumber: '电话号码',
   LocaleKeys.addressEmail: '电子邮件',
+
+  // 购物车
+  LocaleKeys.gCartTitle: '我的购物车',
+  LocaleKeys.gCartBtnSelectAll: '全选',
+  LocaleKeys.gCartBtnApplyCode: '使用优惠码',
+  LocaleKeys.gCartBtnCheckout: '支付',
+  LocaleKeys.gCartTextShippingCost: '配送费',
+  LocaleKeys.gCartTextVocher: '代金券',
+  LocaleKeys.gCartTextTotal: '合计',
 };

@@ -19,14 +19,11 @@ Map<String, String> localeEn = {
 
   // welcome 欢迎:
   LocaleKeys.welcomeOneTitle: 'Choose Your Desire Product',
-  LocaleKeys.welcomeOneDesc:
-      'Contrary to popular belief, Lorem Ipsum is not simply random text',
+  LocaleKeys.welcomeOneDesc: 'Contrary to popular belief, Lorem Ipsum is not simply random text',
   LocaleKeys.welcomeTwoTitle: 'Complete your shopping',
-  LocaleKeys.welcomeTwoDesc:
-      'Contrary to popular belief, Lorem Ipsum is not simply random text',
+  LocaleKeys.welcomeTwoDesc: 'Contrary to popular belief, Lorem Ipsum is not simply random text',
   LocaleKeys.welcomeThreeTitle: 'Get product at your door',
-  LocaleKeys.welcomeThreeDesc:
-      'Contrary to popular belief, Lorem Ipsum is not simply random text',
+  LocaleKeys.welcomeThreeDesc: 'Contrary to popular belief, Lorem Ipsum is not simply random text',
   LocaleKeys.welcomeSkip: 'Skip',
   LocaleKeys.welcomeNext: 'Next',
   LocaleKeys.welcomeStart: 'Get Started',
@@ -53,8 +50,7 @@ Map<String, String> localeEn = {
   LocaleKeys.validatorEmail: 'The field must be an email',
   LocaleKeys.validatorMin: 'Length cannot be less than @size',
   LocaleKeys.validatorMax: 'Length cannot be greater than @size',
-  LocaleKeys.validatorPassword:
-      'password must have between @min and @max digits',
+  LocaleKeys.validatorPassword: 'password must have between @min and @max digits',
 
   // 注册PIN - register pin
   LocaleKeys.registerPinTitle: 'Verification',
@@ -137,4 +133,13 @@ Map<String, String> localeEn = {
   LocaleKeys.addressCompany: 'Company',
   LocaleKeys.addressPhoneNumber: 'Phone number',
   LocaleKeys.addressEmail: 'Email',
+
+  // 购物车
+  LocaleKeys.gCartTitle: 'My Cart',
+  LocaleKeys.gCartBtnSelectAll: 'Select All',
+  LocaleKeys.gCartBtnApplyCode: 'Apply Code',
+  LocaleKeys.gCartBtnCheckout: 'Checkout',
+  LocaleKeys.gCartTextShippingCost: 'Shipping cost',
+  LocaleKeys.gCartTextVocher: 'Voucher',
+  LocaleKeys.gCartTextTotal: 'Total',
 };
