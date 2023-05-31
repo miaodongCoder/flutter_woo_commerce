@@ -11,8 +11,7 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage>
-    with AutomaticKeepAliveClientMixin {
+class _MainPageState extends State<MainPage> with AutomaticKeepAliveClientMixin {
   /// 保持用户会话状态:
   @override
   bool get wantKeepAlive => true;
@@ -33,9 +32,7 @@ class _MainViewGetX extends GetView<MainController> {
     return WillPopScope(
       // 防止连续点击两次退出
       onWillPop: () async {
-        if (lastPressedAt == null ||
-            DateTime.now().difference(lastPressedAt!) >
-                const Duration(seconds: 1)) {
+        if (lastPressedAt == null || DateTime.now().difference(lastPressedAt!) > const Duration(seconds: 1)) {
           lastPressedAt = DateTime.now();
           Loading.toast('Press again to exit');
           return false;
@@ -50,29 +47,34 @@ class _MainViewGetX extends GetView<MainController> {
         bottomNavigationBar: GetBuilder<MainController>(
           id: 'navigation',
           builder: (controller) {
-            return BuildNavigation(
-              currentIndex: controller.currentIndex,
-              items: [
-                NavigationItemModel(
-                  label: LocaleKeys.tabBarHome.tr,
-                  icon: AssetsSvgs.navHomeSvg,
-                ),
-                NavigationItemModel(
-                  label: LocaleKeys.tabBarCart.tr,
-                  icon: AssetsSvgs.navCartSvg,
-                  count: 3, // 购物车数量
-                ),
-                NavigationItemModel(
-                  label: LocaleKeys.tabBarMessage.tr,
-                  icon: AssetsSvgs.navMessageSvg,
-                  count: 9, // 新消息数量
-                ),
-                NavigationItemModel(
-                  label: LocaleKeys.tabBarProfile.tr,
-                  icon: AssetsSvgs.navProfileSvg,
-                ),
-              ],
-              onTap: controller.onJumpToPage, // 切换tab事件
+            // Obx() 是Getx的全局订阅响应:
+            return Obx(
+              () => BuildNavigation(
+                currentIndex: controller.currentIndex,
+                items: [
+                  NavigationItemModel(
+                    label: LocaleKeys.tabBarHome.tr,
+                    icon: AssetsSvgs.navHomeSvg,
+                  ),
+                  NavigationItemModel(
+                    label: LocaleKeys.tabBarCart.tr,
+                    icon: AssetsSvgs.navCartSvg,
+                    // 购物车数量:
+                    count: CartService.to.lineItemsCount,
+                  ),
+                  NavigationItemModel(
+                    label: LocaleKeys.tabBarMessage.tr,
+                    icon: AssetsSvgs.navMessageSvg,
+                    // 新消息数量:
+                    count: 9,
+                  ),
+                  NavigationItemModel(
+                    label: LocaleKeys.tabBarProfile.tr,
+                    icon: AssetsSvgs.navProfileSvg,
+                  ),
+                ],
+                onTap: controller.onJumpToPage, // 切换tab事件
+              ),
             );
           },
         ),

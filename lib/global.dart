@@ -25,9 +25,10 @@ class Global {
     Get.put<ConfigService>(ConfigService());
     // 配置网络请求服务:
     Get.put<WPHttpService>(WPHttpService());
-
-    ///配置用户服务类:
+    // 配置用户服务:
     Get.put<UserService>(UserService());
+    // 购物车服务:
+    Get.put<CartService>(CartService());
   }
 
 // 系统样式
