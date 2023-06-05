@@ -80,25 +80,25 @@ class CartIndexPage extends GetView<CartIndexController> {
   // 统计:
   Widget _buildTotal() {
     return <Widget>[
-      // 运费、代金券
+      // 运费、代金券:
       <Widget>[
-        // 运费
-        TextWidget.body3("${LocaleKeys.gCartTextShippingCost.tr}: \$${CartService.to.shipping}"),
-        // 代金券
-        TextWidget.body3("${LocaleKeys.gCartTextVocher.tr}: \$${CartService.to.discount}"),
+        // 运费:
+        TextWidget.body2("${LocaleKeys.gCartTextShippingCost.tr}: \$${CartService.to.shipping}"),
+        // 代金券:
+        TextWidget.body2("${LocaleKeys.gCartTextVocher.tr}: \$${CartService.to.discount}"),
       ]
           .toColumn(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
           )
           .expanded(),
 
-      // 费用小计
-      TextWidget.body2(
+      // 费用小计:
+      TextWidget.body1(
               "${LocaleKeys.gCartTextTotal.tr}: \$${CartService.to.totalItemPrice - CartService.to.discount + CartService.to.shipping}")
           .paddingRight(AppSpace.iconTextMedium),
 
-      // 确认下单 checkout
+      // 确认下单按钮 checkout:
       ButtonWidget.primary(
         LocaleKeys.gCartBtnCheckout.tr,
         borderRadius: 3.sp,
@@ -112,7 +112,10 @@ class CartIndexPage extends GetView<CartIndexController> {
         .decorated(
           color: AppColors.highlight.withOpacity(0.1),
           border: Border.all(color: AppColors.highlight, width: 1),
+          borderRadius: BorderRadius.circular(AppSpace.listItem),
         )
-        .height(60.w);
+        .paddingHorizontal(AppSpace.page)
+        .expanded()
+        .height(64.w);
   }
 }
