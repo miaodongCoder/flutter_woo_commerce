@@ -8,7 +8,7 @@ import 'index.dart';
 class CartIndexPage extends GetView<CartIndexController> {
   const CartIndexPage({Key? key}) : super(key: key);
 
-  // 主视图
+  // 主视图:
   Widget _buildView() {
     return <Widget>[
       // 顶部操作栏:
@@ -56,6 +56,7 @@ class CartIndexPage extends GetView<CartIndexController> {
             item.productId!,
             isSelected,
           ),
+          onChangeQuantity: (quantity) => controller.onChangeQuantity(item, quantity),
         ).paddingAll(AppSpace.card).card();
       },
       separatorBuilder: (BuildContext context, int index) {
