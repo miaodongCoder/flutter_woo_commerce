@@ -43,7 +43,7 @@ class CartIndexPage extends GetView<CartIndexController> {
     return ListView.separated(
       itemBuilder: (BuildContext context, int index) {
         LineItem item = CartService.to.lineItems[index];
-        return Text(item.product?.name ?? "").paddingAll(AppSpace.card).card();
+        return CartItem(lineItem: item).paddingAll(AppSpace.card).card();
       },
       separatorBuilder: (BuildContext context, int index) {
         return SizedBox(height: AppSpace.listRow);
