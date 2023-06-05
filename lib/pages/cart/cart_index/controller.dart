@@ -63,4 +63,28 @@ class CartIndexController extends GetxController {
     selectedIds.clear();
     update(["cart_index"]);
   }
+
+  // 应用优惠码:`568935ab`
+  Future<void> onApplyCoupon() async {
+    if (couponCode.isEmpty) {
+      Loading.error("优惠码为空~");
+      return;
+    }
+
+    CouponsModel? coupon = await CouponApi.couponsDetail(couponCode);
+    if (coupon == null) {
+      Loading.error("无效的优惠码!");
+      return;
+    }
+
+    couponCode = '';
+    // 使用优惠券:
+    bool isSuccess = CartService.to.applyCoupon(coupon);
+    if (isSuccess) {
+      Loading.success("优惠码使用成功!");
+    } else {
+      Loading.error("优惠码已经被使用过啦~");
+    }
+    update(['cart_index']);
+  }
 }

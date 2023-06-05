@@ -11,7 +11,8 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> with AutomaticKeepAliveClientMixin {
+class _MainPageState extends State<MainPage>
+    with AutomaticKeepAliveClientMixin {
   /// 保持用户会话状态:
   @override
   bool get wantKeepAlive => true;
@@ -32,7 +33,9 @@ class _MainViewGetX extends GetView<MainController> {
     return WillPopScope(
       // 防止连续点击两次退出
       onWillPop: () async {
-        if (lastPressedAt == null || DateTime.now().difference(lastPressedAt!) > const Duration(seconds: 1)) {
+        if (lastPressedAt == null ||
+            DateTime.now().difference(lastPressedAt!) >
+                const Duration(seconds: 1)) {
           lastPressedAt = DateTime.now();
           Loading.toast('Press again to exit');
           return false;

@@ -191,7 +191,9 @@ class Product {
         lowStockAmount: json['low_stock_amount'] as dynamic,
         soldIndividually: json['sold_individually'] as bool?,
         weight: json['weight'] as String?,
-        dimensions: json['dimensions'] == null ? null : Dimensions.fromJson(json['dimensions'] as Map<String, dynamic>),
+        dimensions: json['dimensions'] == null
+            ? null
+            : Dimensions.fromJson(json['dimensions'] as Map<String, dynamic>),
         shippingRequired: json['shipping_required'] as bool?,
         shippingTaxable: json['shipping_taxable'] as bool?,
         shippingClass: json['shipping_class'] as String?,
@@ -203,23 +205,32 @@ class Product {
         crossSellIds: json['cross_sell_ids'] as List<dynamic>?,
         parentId: json['parent_id'] as int?,
         purchaseNote: json['purchase_note'] as String?,
-        categories:
-            (json['categories'] as List<dynamic>?)?.map((e) => Category.fromJson(e as Map<String, dynamic>)).toList(),
-        tags: (json['tags'] as List<dynamic>?)?.map((e) => Tag.fromJson(e as Map<String, dynamic>)).toList(),
-        images: (json['images'] as List<dynamic>?)?.map((e) => Image.fromJson(e as Map<String, dynamic>)).toList(),
-        attributes:
-            (json['attributes'] as List<dynamic>?)?.map((e) => Attribute.fromJson(e as Map<String, dynamic>)).toList(),
+        categories: (json['categories'] as List<dynamic>?)
+            ?.map((e) => Category.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        tags: (json['tags'] as List<dynamic>?)
+            ?.map((e) => Tag.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        images: (json['images'] as List<dynamic>?)
+            ?.map((e) => Image.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        attributes: (json['attributes'] as List<dynamic>?)
+            ?.map((e) => Attribute.fromJson(e as Map<String, dynamic>))
+            .toList(),
         defaultAttributes: json['default_attributes'] as List<dynamic>?,
         variations: json['variations'] as List<dynamic>?,
         groupedProducts: json['grouped_products'] as List<dynamic>?,
         menuOrder: json['menu_order'] as int?,
         priceHtml: json['price_html'] as String?,
         relatedIds: json['related_ids'] as List<int>?,
-        metaData:
-            (json['meta_data'] as List<dynamic>?)?.map((e) => MetaDatum.fromJson(e as Map<String, dynamic>)).toList(),
+        metaData: (json['meta_data'] as List<dynamic>?)
+            ?.map((e) => MetaDatum.fromJson(e as Map<String, dynamic>))
+            .toList(),
         stockStatus: json['stock_status'] as String?,
         hasOptions: json['has_options'] as bool?,
-        links: json['_links'] == null ? null : Links.fromJson(json['_links'] as Map<String, dynamic>),
+        links: json['_links'] == null
+            ? null
+            : Links.fromJson(json['_links'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {

@@ -36,7 +36,8 @@ class CartItem extends StatelessWidget {
   }
 
   Widget _buildView() {
-    ProductModel productModel = lineItem.product ?? ProductModel(id: 000, name: "空白商品数据");
+    ProductModel productModel =
+        lineItem.product ?? ProductModel(id: 000, name: "空白商品数据");
     return <Widget>[
       // 1.单选框:
       CheckBoxWidget.all(

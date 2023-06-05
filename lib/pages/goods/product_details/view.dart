@@ -13,7 +13,8 @@ class ProductDetailsPage extends StatefulWidget {
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();
 }
 
-class _ProductDetailsPageState extends State<ProductDetailsPage> with AutomaticKeepAliveClientMixin {
+class _ProductDetailsPageState extends State<ProductDetailsPage>
+    with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 
@@ -63,7 +64,9 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
       tag: tag,
       builder: (_) {
         return Scaffold(
-          appBar: mainAppBarWidget(titleString: controller.productModel?.name ?? LocaleKeys.gDetailTitle.tr),
+          appBar: mainAppBarWidget(
+              titleString:
+                  controller.productModel?.name ?? LocaleKeys.gDetailTitle.tr),
           body: SafeArea(
             child: _buildView(),
           ),
@@ -134,7 +137,8 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
       id: "product_tab",
       builder: (controller) {
         return <Widget>[
-          for (int i = 0; i < controller.tabTitles.length; i++) _buildTabBarItem(controller.tabTitles[i], i),
+          for (int i = 0; i < controller.tabTitles.length; i++)
+            _buildTabBarItem(controller.tabTitles[i], i),
         ].toRow(
           mainAxisAlignment: MainAxisAlignment.center,
         );
@@ -147,8 +151,11 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
       textString,
       onTap: () => controller.onChangeTabController(index),
       borderRadius: 17,
-      textColor: controller.tabIndex == index ? AppColors.onPrimary : AppColors.secondary,
-      bgColor: controller.tabIndex == index ? AppColors.primary : Colors.transparent,
+      textColor: controller.tabIndex == index
+          ? AppColors.onPrimary
+          : AppColors.secondary,
+      bgColor:
+          controller.tabIndex == index ? AppColors.primary : Colors.transparent,
     ).tight(
       width: 100.w,
       height: 35.h,
@@ -184,6 +191,8 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
       ButtonWidget.primary(
         LocaleKeys.gDetailBtnBuy.tr,
       ).expanded(),
-    ].toRow(mainAxisAlignment: MainAxisAlignment.spaceAround).paddingHorizontal(AppSpace.page);
+    ]
+        .toRow(mainAxisAlignment: MainAxisAlignment.spaceAround)
+        .paddingHorizontal(AppSpace.page);
   }
 }

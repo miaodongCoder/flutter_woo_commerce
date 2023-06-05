@@ -16,6 +16,6 @@ export 'woo/order_model/order_model.dart';
 export './woo/continents_model/continents_model.dart';
 export './woo/continents_model/country.dart';
 export './woo/order_model/line_item/line_item.dart';
-
+export './woo/coupons_model/coupons_model.dart';
 
 export 'kv.dart';

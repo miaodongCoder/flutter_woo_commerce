@@ -55,7 +55,9 @@ class LineItem {
         sku: json['sku'] as String?,
         price: json['price'] as int?,
         parentName: json['parent_name'] as dynamic,
-        product: json['product'] == null ? null : ProductModel.fromJson(json['product'] as Map<String, dynamic>),
+        product: json['product'] == null
+            ? null
+            : ProductModel.fromJson(json['product'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {
