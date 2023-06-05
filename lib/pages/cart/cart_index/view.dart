@@ -77,7 +77,7 @@ class CartIndexPage extends GetView<CartIndexController> {
     ].toRow();
   }
 
-  // 统计
+  // 统计:
   Widget _buildTotal() {
     return <Widget>[
       // 运费、代金券

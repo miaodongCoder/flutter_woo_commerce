@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_woo_commerce/common/index.dart';
-import 'package:flutter_woo_commerce/pages/index.dart';
 import 'package:get/get.dart';
+import '../../../common/index.dart';
+import '../../index.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -52,22 +52,24 @@ class _MainViewGetX extends GetView<MainController> {
               () => BuildNavigation(
                 currentIndex: controller.currentIndex,
                 items: [
+                  // 首页:
                   NavigationItemModel(
                     label: LocaleKeys.tabBarHome.tr,
                     icon: AssetsSvgs.navHomeSvg,
                   ),
+                  // 购物车:
                   NavigationItemModel(
                     label: LocaleKeys.tabBarCart.tr,
                     icon: AssetsSvgs.navCartSvg,
-                    // 购物车数量:
-                    count: CartService.to.lineItemsCount,
+                    count: CartService.to.lineItemsCount, // 购物车数量
                   ),
+                  // 消息:
                   NavigationItemModel(
                     label: LocaleKeys.tabBarMessage.tr,
                     icon: AssetsSvgs.navMessageSvg,
-                    // 新消息数量:
-                    count: 9,
+                    count: 9, // 新消息数量
                   ),
+                  // 个人资料:
                   NavigationItemModel(
                     label: LocaleKeys.tabBarProfile.tr,
                     icon: AssetsSvgs.navProfileSvg,
@@ -78,7 +80,7 @@ class _MainViewGetX extends GetView<MainController> {
             );
           },
         ),
-        // 内容页
+        // 内容页:
         body: PageView(
           // 不响应用户的滚动:
           physics: const NeverScrollableScrollPhysics(),
