@@ -32,7 +32,7 @@ class CartService extends GetxService {
       // 入参的item 就是指购物车列表里的同productId 的item!
       item = lineItems[index];
       // 已经存在 , 更新数量:
-      item.quantity = item.quantity ?? 1 + 1;
+      item.quantity = item.quantity! + 1;
       item.price = int.parse(item.product?.price ?? "0");
       item.total = (item.price! * item.quantity!).toString();
     } else {

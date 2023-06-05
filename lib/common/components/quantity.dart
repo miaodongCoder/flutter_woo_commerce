@@ -32,14 +32,26 @@ class QuantityWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return <Widget>[
       // 减号:
-      ButtonWidget.icon(
-        Icon(
-          CupertinoIcons.minus,
-          size: fontSize ?? 14,
-          color: color,
+      // 超过一个数量才允许显示可点击的删除按钮:
+      if (quantity > 1)
+        ButtonWidget.icon(
+          Icon(
+            CupertinoIcons.minus,
+            size: fontSize ?? 14,
+            color: color,
+          ),
+          onTap: () => onChange(quantity - 1),
         ),
-        onTap: () => onChange(quantity - 1 < 0 ? 0 : quantity - 1),
-      ),
+      // 只有一个不允许再删除:
+      if (quantity == 1)
+        ButtonWidget.icon(
+          Icon(
+            CupertinoIcons.minus,
+            size: fontSize ?? 14,
+            color: AppColors.surfaceVariant,
+          ),
+          onTap: null,
+        ),
 
       // 数量:
       TextWidget.body2(
