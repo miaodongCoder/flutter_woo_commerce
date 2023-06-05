@@ -12,7 +12,11 @@ class CartIndexPage extends GetView<CartIndexController> {
   Widget _buildView() {
     return <Widget>[
       // 顶部操作栏:
-
+      ActionBar(
+        onAll: controller.onSelectAll,
+        onRemove: controller.onOrderCancel,
+        isAll: controller.isSelectedAll,
+      ).paddingAll(AppSpace.page),
       // 订单列表:
       _buildOrders().paddingHorizontal(AppSpace.page).expanded(),
       // 优惠券:
@@ -38,12 +42,21 @@ class CartIndexPage extends GetView<CartIndexController> {
     );
   }
 
-  // 订单列表
+  // 订单列表:
   Widget _buildOrders() {
     return ListView.separated(
       itemBuilder: (BuildContext context, int index) {
         LineItem item = CartService.to.lineItems[index];
-        return CartItem(lineItem: item).paddingAll(AppSpace.card).card();
+        return CartItem(
+          lineItem: item,
+          // 是否选中:
+          isSelected: controller.isSelected(item.productId!),
+          // 选中回调:
+          onSelected: (isSelected) => controller.onSelect(
+            item.productId!,
+            isSelected,
+          ),
+        ).paddingAll(AppSpace.card).card();
       },
       separatorBuilder: (BuildContext context, int index) {
         return SizedBox(height: AppSpace.listRow);
@@ -115,7 +128,6 @@ class CartIndexPage extends GetView<CartIndexController> {
           borderRadius: BorderRadius.circular(AppSpace.listItem),
         )
         .paddingHorizontal(AppSpace.page)
-        .expanded()
         .height(64.w);
   }
 }

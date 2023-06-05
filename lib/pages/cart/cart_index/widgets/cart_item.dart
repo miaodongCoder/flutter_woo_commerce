@@ -10,13 +10,16 @@ class CartItem extends StatelessWidget {
   // 订单数据:
   final LineItem lineItem;
   // 修改数量事件:
-  final Function()? onChangeQuantity;
+  final Function(int value)? onChangeQuantity;
   // 选中事件:
-  final Function()? onSelected;
+  final Function(bool value)? onSelected;
+  // 是否全选:
+  final bool isSelected;
 
   const CartItem({
     super.key,
     required this.lineItem,
+    required this.isSelected,
     this.onChangeQuantity,
     this.onSelected,
   });
@@ -35,7 +38,15 @@ class CartItem extends StatelessWidget {
   Widget _buildView() {
     ProductModel productModel = lineItem.product ?? ProductModel(id: 000, name: "空白商品数据");
     return <Widget>[
-      // 1.图片:
+      // 1.单选框:
+      CheckBoxWidget.all(
+        isSelected,
+        onSelected,
+        fontColor: AppColors.primary,
+        bgColorChecked: AppColors.primaryContainer,
+        size: 20.sp,
+      ).paddingRight(AppSpace.iconTextSmail),
+      // 2.图片:
       ImageWidget.url(
         Convert.aliImageResize(
           productModel.images?.first.src ?? "",
@@ -46,7 +57,7 @@ class CartItem extends StatelessWidget {
         height: 100.w,
         radius: AppRadius.image.w,
       ).paddingRight(AppSpace.iconTextMedium),
-      // 2.标题、数量、金额:
+      // 3.标题、数量、金额:
       <Widget>[
         TextWidget.title3(
           productModel.name ?? "",
