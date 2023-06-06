@@ -23,8 +23,10 @@ class BuyNowPage extends GetView<BuyNowController> {
       _buildShipping(),
       // 数量:
       _buildTitle(LocaleKeys.placeOrderQuantity.tr),
+      _buildQuantity(),
       // 小计:
       _buildTitle(LocaleKeys.placeOrderPrice.tr),
+      _buildPrice(),
       // 按钮:
       _buildButtons(),
     ]
@@ -93,7 +95,7 @@ class BuyNowPage extends GetView<BuyNowController> {
         .paddingHorizontal(AppSpace.page);
   }
 
-  // 送货地址
+  // 送货地址:
   Widget _buildShipping() {
     return <Widget>[
       // 文字:
@@ -116,5 +118,48 @@ class BuyNowPage extends GetView<BuyNowController> {
         )
         .onTap(controller.onShippingTap)
         .paddingBottom(AppSpace.listRow);
+  }
+
+  // 数量:
+  Widget _buildQuantity() {
+    return QuantityWidget(
+      quantity: controller.quantity,
+      onChange: controller.onQuantityChange,
+    ).paddingBottom(AppSpace.listRow);
+  }
+
+  // 价格:
+  Widget _buildPrice() {
+    return <Widget>[
+      // 运费:
+      BuildPriceLine(
+        titleString: LocaleKeys.placeOrderPriceShipping.tr,
+        priceString: "\$${controller.shipping}",
+      ),
+
+      // 折扣:
+      BuildPriceLine(
+        titleString: LocaleKeys.placeOrderPriceDiscount.tr,
+        priceString: "\$${controller.discount}",
+      ),
+
+      // 代金券:
+      BuildPriceLine(
+        titleString: LocaleKeys.placeOrderPriceVoucherCode.tr,
+        rightWidget: ButtonWidget.text(
+          LocaleKeys.placeOrderPriceVoucherCodeEnter.tr,
+          textSize: 9,
+          textColor: AppColors.highlight,
+        ),
+      ),
+
+      // 小计:
+      BuildPriceLine(
+        leftWidget: TextWidget.body1(LocaleKeys.placeOrderTotal.tr),
+        rightWidget: TextWidget.body1("\$${controller.totalPrice - controller.discount}"),
+      ),
+
+      //
+    ].toColumn().paddingBottom(AppSpace.listRow);
   }
 }
