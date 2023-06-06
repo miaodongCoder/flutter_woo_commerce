@@ -87,7 +87,7 @@ class BuyNowPage extends GetView<BuyNowController> {
       ButtonWidget.primary(
         LocaleKeys.placeOrderBtnPlaceOrder.tr,
         onTap: controller.onCheckout,
-      ).expanded(),
+      ).tight(height: 50.w).expanded(),
     ]
         .toRow(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -150,6 +150,7 @@ class BuyNowPage extends GetView<BuyNowController> {
           LocaleKeys.placeOrderPriceVoucherCodeEnter.tr,
           textSize: 9,
           textColor: AppColors.highlight,
+          onTap: controller.onEnterCouponCode, // 输入优惠券码
         ),
       ),
 

@@ -5,7 +5,7 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import '../index.dart';
 
-/// 底部弹出对话框
+/// 底部弹出对话框:
 class ActionBottomSheet {
   // 头部
   static Widget _buildHeader({

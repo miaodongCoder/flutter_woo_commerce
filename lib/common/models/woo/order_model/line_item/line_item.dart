@@ -53,11 +53,9 @@ class LineItem {
         taxes: json['taxes'] as List<dynamic>?,
         metaData: json['meta_data'] as List<dynamic>?,
         sku: json['sku'] as String?,
-        price: json['price'] as int?,
+        price: int.parse("${json['price']}"),
         parentName: json['parent_name'] as dynamic,
-        product: json['product'] == null
-            ? null
-            : ProductModel.fromJson(json['product'] as Map<String, dynamic>),
+        product: json['product'] == null ? null : ProductModel.fromJson(json['product'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {
