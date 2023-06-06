@@ -19,14 +19,11 @@ Map<String, String> localeEn = {
 
   // welcome 欢迎:
   LocaleKeys.welcomeOneTitle: 'Choose Your Desire Product',
-  LocaleKeys.welcomeOneDesc:
-      'Contrary to popular belief, Lorem Ipsum is not simply random text',
+  LocaleKeys.welcomeOneDesc: 'Contrary to popular belief, Lorem Ipsum is not simply random text',
   LocaleKeys.welcomeTwoTitle: 'Complete your shopping',
-  LocaleKeys.welcomeTwoDesc:
-      'Contrary to popular belief, Lorem Ipsum is not simply random text',
+  LocaleKeys.welcomeTwoDesc: 'Contrary to popular belief, Lorem Ipsum is not simply random text',
   LocaleKeys.welcomeThreeTitle: 'Get product at your door',
-  LocaleKeys.welcomeThreeDesc:
-      'Contrary to popular belief, Lorem Ipsum is not simply random text',
+  LocaleKeys.welcomeThreeDesc: 'Contrary to popular belief, Lorem Ipsum is not simply random text',
   LocaleKeys.welcomeSkip: 'Skip',
   LocaleKeys.welcomeNext: 'Next',
   LocaleKeys.welcomeStart: 'Get Started',
@@ -53,8 +50,7 @@ Map<String, String> localeEn = {
   LocaleKeys.validatorEmail: 'The field must be an email',
   LocaleKeys.validatorMin: 'Length cannot be less than @size',
   LocaleKeys.validatorMax: 'Length cannot be greater than @size',
-  LocaleKeys.validatorPassword:
-      'password must have between @min and @max digits',
+  LocaleKeys.validatorPassword: 'password must have between @min and @max digits',
 
   // 注册PIN - register pin
   LocaleKeys.registerPinTitle: 'Verification',
@@ -146,4 +142,22 @@ Map<String, String> localeEn = {
   LocaleKeys.gCartTextShippingCost: 'Shipping cost',
   LocaleKeys.gCartTextVocher: 'Voucher',
   LocaleKeys.gCartTextTotal: 'Total',
+
+  // 下单 checkout
+  LocaleKeys.placeOrderTitle: 'Checkout',
+  LocaleKeys.placeOrderPayment: 'Payment Method',
+  LocaleKeys.placeOrderShippingAddress: 'Shipping Address',
+  LocaleKeys.placeOrderQuantity: 'Quantity',
+  LocaleKeys.placeOrderPrice: 'Price',
+  LocaleKeys.placeOrderPriceShipping: 'Shipping',
+  LocaleKeys.placeOrderPriceDiscount: 'Discount',
+  LocaleKeys.placeOrderPriceVoucherCode: 'Voucher Code',
+  LocaleKeys.placeOrderPriceVoucherCodeEnter: 'Voucher Code Enter',
+  LocaleKeys.placeOrderTotal: 'Total',
+  LocaleKeys.placeOrderBtnPlaceOrder: 'Place Order',
+
+  // 下单确认
+  LocaleKeys.orderConfirmationTitle: 'Order Placed',
+  LocaleKeys.orderConfirmationDesc: 'Your order was placed Successfully',
+  LocaleKeys.orderConfirmationBtnHome: 'Go Home',
 };

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_woo_commerce/common/index.dart';
 import 'package:flutter_woo_commerce/common/models/request/product.dart';
 import 'package:flutter_woo_commerce/common/models/woo/review_model/review_model.dart';
+import 'package:flutter_woo_commerce/pages/index.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-class ProductDetailsController extends GetxController
-    with GetSingleTickerProviderStateMixin {
+class ProductDetailsController extends GetxController with GetSingleTickerProviderStateMixin {
   late TabController tabController;
   List<String> tabTitles = [
     LocaleKeys.gDetailTabProduct.tr,
@@ -156,9 +156,7 @@ class ProductDetailsController extends GetxController
   void onGalleryTap(int index, KeyValueModel item) {
     Get.to(GalleryWidget(
       initialIndex: index,
-      items: bannerItems
-          .map<String>((KeyValueModel model) => model.value)
-          .toList(),
+      items: bannerItems.map<String>((KeyValueModel model) => model.value).toList(),
     ));
   }
 
@@ -260,5 +258,24 @@ class ProductDetailsController extends GetxController
 
     // 加入购物车后退出商品详情页:
     Get.back();
+  }
+
+  // 立刻购买 checkout:
+  void onCheckoutTap() async {
+    // 检查是否登录
+    if (!await UserService.to.checkIsLogin()) {
+      return;
+    }
+
+    // 检查空
+    if (productModel == null || productModel?.id == null) {
+      Loading.error("product is empty");
+      return;
+    }
+
+    // 立刻购买 checkout
+    ActionBottomSheet.barModel(
+      BuyNowPage(productModel: productModel!),
+    );
   }
 }

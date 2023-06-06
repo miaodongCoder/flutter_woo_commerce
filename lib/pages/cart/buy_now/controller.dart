@@ -1,18 +1,23 @@
 import 'package:get/get.dart';
 
+import '../../../common/index.dart';
+
 class BuyNowController extends GetxController {
-  BuyNowController();
+  // 商品详情:
+  ProductModel productModel;
+
+  BuyNowController(this.productModel);
+  // 支付方式图标
+  List<String> paymentList = [
+    AssetsImage.pVisaPng,
+    AssetsImage.pCashPng,
+    AssetsImage.pMastercardPng,
+    AssetsImage.pPaypalPng,
+  ];
 
   _initData() {
     update(["buy_now"]);
   }
-
-  void onTap() {}
-
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  // }
 
   @override
   void onReady() {
@@ -20,8 +25,6 @@ class BuyNowController extends GetxController {
     _initData();
   }
 
-  // @override
-  // void onClose() {
-  //   super.onClose();
-  // }
+  // 下单 checkout
+  void onCheckout() async {}
 }
