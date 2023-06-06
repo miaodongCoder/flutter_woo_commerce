@@ -20,6 +20,7 @@ class BuyNowPage extends GetView<BuyNowController> {
       _buildPayment(),
       // 送货地址:
       _buildTitle(LocaleKeys.placeOrderShippingAddress.tr),
+      _buildShipping(),
       // 数量:
       _buildTitle(LocaleKeys.placeOrderQuantity.tr),
       // 小计:
@@ -90,5 +91,30 @@ class BuyNowPage extends GetView<BuyNowController> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
         )
         .paddingHorizontal(AppSpace.page);
+  }
+
+  // 送货地址
+  Widget _buildShipping() {
+    return <Widget>[
+      // 文字:
+      TextWidget.body1(controller.shippingAddress).expanded(),
+      // 图标:
+      const IconWidget.icon(
+        Icons.arrow_drop_down,
+        size: 32,
+      ),
+    ]
+        .toRow()
+        .paddingAll(AppSpace.button)
+        .decorated(
+          color: AppColors.surfaceVariant,
+          border: Border.all(
+            color: AppColors.outline,
+            width: 0.5,
+          ),
+          borderRadius: BorderRadius.circular(AppRadius.button),
+        )
+        .onTap(controller.onShippingTap)
+        .paddingBottom(AppSpace.listRow);
   }
 }
