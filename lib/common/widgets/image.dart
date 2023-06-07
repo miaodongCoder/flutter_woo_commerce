@@ -22,8 +22,7 @@ class ImageWidget extends StatelessWidget {
   final Widget? placeholder;
   final Color? backgroundColor;
   // build回调函数:
-  final Widget Function(BuildContext context, ImageProvider provider,
-      Widget completed, Size? size)? builder;
+  final Widget Function(BuildContext context, ImageProvider provider, Widget completed, Size? size)? builder;
 
   const ImageWidget({
     super.key,
@@ -117,7 +116,6 @@ class ImageWidget extends StatelessWidget {
         );
         break;
       case ImageWidgetType.file:
-        if (!url.contains('http')) break;
         image = ExtendedImage.file(
           File(url),
           width: width,
@@ -144,8 +142,7 @@ class ImageWidget extends StatelessWidget {
   }
 
   // 实时的回调当前图片加载的状态:
-  Widget _buildLoadStateChanged(
-      BuildContext context, ExtendedImageState state) {
+  Widget _buildLoadStateChanged(BuildContext context, ExtendedImageState state) {
     switch (state.extendedImageLoadState) {
       // 读取中:
       case LoadState.loading:
@@ -162,8 +159,7 @@ class ImageWidget extends StatelessWidget {
           }
           final imageProvider = state.imageProvider;
           final completedWidget = state.completedWidget;
-          return builder?.call(context, imageProvider, completedWidget, size) ??
-              completedWidget;
+          return builder?.call(context, imageProvider, completedWidget, size) ?? completedWidget;
         }
       case LoadState.failed:
         return const Center(

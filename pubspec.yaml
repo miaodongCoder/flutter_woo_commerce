@@ -81,7 +81,9 @@ dependencies:
   modal_bottom_sheet: ^3.0.0-pre
   # permission 权限:
   permission_handler: ^10.3.0
-
+  # 媒体选择:
+  wechat_assets_picker: 8.4.3
+  wechat_camera_picker: ^3.8.0
 
 
 
