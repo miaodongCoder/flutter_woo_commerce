@@ -102,7 +102,7 @@ class OrderDetailsPage extends GetView<OrderDetailsController> {
         statusDateTime: "20 Jan, 2019",
         statusDes: "Lorem Ipsum is simply dumy text of printing and typesetting industry.",
         status: StepStatus.none,
-      ).backgroundColor(Colors.red),
+      ),
       const StepVerticalItemWidget(
         statusName: "Shipped",
         statusDateTime: "20 Jan, 2019",
