@@ -79,6 +79,8 @@ dependencies:
   flutter_picker: ^2.1.0
   # 底部弹出:
   modal_bottom_sheet: ^3.0.0-pre
+  # permission 权限:
+  permission_handler: ^10.3.0
 
 
 
