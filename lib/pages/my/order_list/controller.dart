@@ -91,5 +91,7 @@ class OrderListController extends GetxController {
   }
 
   // 点击item进入订单详情:
-  void onOrderItemTap(OrderModel order) {}
+  void onOrderItemTap(OrderModel order) {
+    Get.toNamed(RouteNames.myOrderDetails, arguments: order);
+  }
 }
