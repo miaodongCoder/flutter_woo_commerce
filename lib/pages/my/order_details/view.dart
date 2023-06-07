@@ -175,11 +175,65 @@ class OrderDetailsPage extends GetView<OrderDetailsController> {
     return BuildProductList(
       lineItems: controller.order.lineItems ?? [],
       currencySymbol: controller.order.currencySymbol,
-    ).paddingAll(AppSpace.card).card().paddingBottom(AppSpace.listRow);
+    ).paddingAll(AppSpace.card).card().paddingAll(AppSpace.listRow);
   }
 
-  // 小计:
+  // 小计
   Widget _buildTotal() {
-    return const Text("小计");
+    return <Widget>[
+      // 左侧
+      <Widget>[
+        // Payment Method
+        TextWidget.body1(LocaleKeys.orderDetailsPaymentMethod.tr),
+
+        // VISA Card Payment
+        const TextWidget.body2("VISA Card Payment"),
+
+        // Balance 余额
+        BuildTotalItem(
+          title: LocaleKeys.orderDetailsBalance.tr,
+          currencySymbol: controller.order.currencySymbol,
+          price: "0",
+        ),
+      ]
+          .toColumn(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+          )
+          .expanded(),
+
+      // 间距
+      SizedBox(
+        width: AppSpace.iconTextMedium,
+      ),
+
+      // 右侧
+      <Widget>[
+        // Total
+        BuildTotalItem(
+          title: LocaleKeys.orderDetailsTotal.tr,
+          currencySymbol: controller.order.currencySymbol,
+          price: controller.order.total,
+        ),
+
+        // Shipping
+        BuildTotalItem(
+          title: LocaleKeys.orderDetailsShipping.tr,
+          currencySymbol: controller.order.currencySymbol,
+          price: controller.order.shippingTotal,
+        ),
+
+        // Discount
+        BuildTotalItem(
+          title: LocaleKeys.orderDetailsDiscount.tr,
+          currencySymbol: controller.order.currencySymbol,
+          price: controller.order.discountTotal,
+        ),
+      ]
+          .toColumn(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          )
+          .expanded(),
+    ].toRow().height(100).paddingAll(AppSpace.card).card().paddingAll(AppSpace.listRow);
   }
 }
