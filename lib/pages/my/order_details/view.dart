@@ -60,9 +60,38 @@ class OrderDetailsPage extends GetView<OrderDetailsController> {
         );
   }
 
-  // 横向状态:
+  // 横向状态
   Widget _buildHorizontalStatus() {
-    return const Text("横向状态");
+    return <Widget>[
+      const StepHorizontalItemWidget(
+        statusName: "Pending",
+        status: StepStatus.success,
+      ),
+      const StepHorizontalItemWidget(
+        statusName: "Confirmed",
+        status: StepStatus.success,
+      ),
+      const StepHorizontalItemWidget(
+        statusName: "Processing",
+        status: StepStatus.running,
+      ),
+      const StepHorizontalItemWidget(
+        statusName: "Picked",
+        status: StepStatus.none,
+      ),
+      const StepHorizontalItemWidget(
+        statusName: "Shipped",
+        status: StepStatus.none,
+      ),
+      const StepHorizontalItemWidget(
+        statusName: "Delivered",
+        status: StepStatus.none,
+      ),
+    ].toRow().padding(
+          bottom: AppSpace.listRow,
+          left: AppSpace.page,
+          right: AppSpace.page,
+        );
   }
 
   // 纵向状态:
