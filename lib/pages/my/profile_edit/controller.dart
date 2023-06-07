@@ -72,4 +72,22 @@ class ProfileEditController extends GetxController {
       ),
     );
   }
+
+  // 保存按钮的点击方法:
+  Future<void> onSave() async {
+    if ((formKey.currentState as FormState).validate()) {
+      // 密码 email 不修改 影响登录:
+      // 提交
+      UserProfileModel profile = await UserApi.saveBaseInfo(UserProfileModel(
+        firstName: firstNameController.text,
+        lastName: lastNameController.text,
+        // email: emailController.text,
+      ));
+
+      // 更新本地
+      UserService.to.setProfile(profile);
+      Loading.success();
+      update(["profile_edit"]);
+    }
+  }
 }

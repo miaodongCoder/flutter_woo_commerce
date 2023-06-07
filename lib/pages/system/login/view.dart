@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_woo_commerce/common/index.dart';
-import 'package:flutter_woo_commerce/common/widgets/text_form.dart';
 import 'package:get/get.dart';
 import 'package:validatorless/validatorless.dart';
 
@@ -59,10 +58,8 @@ class LoginPage extends GetView<LoginController> {
           validator: Validatorless.multiple(
             [
               Validatorless.required(LocaleKeys.validatorRequired.tr),
-              Validatorless.min(
-                  3, LocaleKeys.validatorMin.trParams({"size": "3"})),
-              Validatorless.max(
-                  20, LocaleKeys.validatorMin.trParams({"size": "20"})),
+              Validatorless.min(3, LocaleKeys.validatorMin.trParams({"size": "3"})),
+              Validatorless.max(20, LocaleKeys.validatorMin.trParams({"size": "20"})),
             ],
           ),
         ).paddingBottom(AppSpace.listRow.w),
@@ -75,18 +72,12 @@ class LoginPage extends GetView<LoginController> {
           validator: Validatorless.multiple(
             [
               Validatorless.required(LocaleKeys.validatorRequired.tr),
-              Validators.password(
-                  6,
-                  18,
-                  LocaleKeys.validatorPassword
-                      .trParams({"min": "6", "max": "18"})),
+              Validators.password(6, 18, LocaleKeys.validatorPassword.trParams({"min": "6", "max": "18"})),
             ],
           ),
         ).paddingBottom(AppSpace.listRow.w),
         // 忘记密码:
-        TextWidget.body1(LocaleKeys.loginForgotPassword.tr)
-            .alignRight()
-            .paddingBottom(50.w),
+        TextWidget.body1(LocaleKeys.loginForgotPassword.tr).alignRight().paddingBottom(50.w),
 
         // 登录按钮:
         ButtonWidget.primary(

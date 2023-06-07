@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:validatorless/validatorless.dart';
 
 import '../../../common/index.dart';
-import '../../../common/widgets/text_form.dart';
 import 'index.dart';
 
 class MyAddressPage extends GetView<MyAddressController> {
@@ -61,12 +60,8 @@ class MyAddressPage extends GetView<MyAddressController> {
             labelText: LocaleKeys.addressFirstName.tr,
             validator: Validatorless.multiple([
               Validatorless.required("The field is obligatory"),
-              Validatorless.min(3,
-                  "Length cannot be less than @size".trParams({"size": "3"})),
-              Validatorless.max(
-                  18,
-                  "Length cannot be greater than @size"
-                      .trParams({"size": "18"})),
+              Validatorless.min(3, "Length cannot be less than @size".trParams({"size": "3"})),
+              Validatorless.max(18, "Length cannot be greater than @size".trParams({"size": "18"})),
             ]),
           ),
 
@@ -77,12 +72,8 @@ class MyAddressPage extends GetView<MyAddressController> {
             labelText: LocaleKeys.addressLastName.tr,
             validator: Validatorless.multiple([
               Validatorless.required("The field is obligatory"),
-              Validatorless.min(3,
-                  "Length cannot be less than @size".trParams({"size": "3"})),
-              Validatorless.max(
-                  18,
-                  "Length cannot be greater than @size"
-                      .trParams({"size": "18"})),
+              Validatorless.min(3, "Length cannot be less than @size".trParams({"size": "3"})),
+              Validatorless.max(18, "Length cannot be greater than @size".trParams({"size": "18"})),
             ]),
           ),
 
@@ -117,12 +108,8 @@ class MyAddressPage extends GetView<MyAddressController> {
             labelText: LocaleKeys.addressPostCode.tr,
             validator: Validatorless.multiple([
               Validatorless.required("The field is obligatory"),
-              Validatorless.min(3,
-                  "Length cannot be less than @size".trParams({"size": "3"})),
-              Validatorless.max(
-                  12,
-                  "Length cannot be greater than @size"
-                      .trParams({"size": "12"})),
+              Validatorless.min(3, "Length cannot be less than @size".trParams({"size": "3"})),
+              Validatorless.max(12, "Length cannot be greater than @size".trParams({"size": "12"})),
             ]),
           ),
 
@@ -167,12 +154,8 @@ class MyAddressPage extends GetView<MyAddressController> {
               labelText: LocaleKeys.addressPhoneNumber.tr,
               validator: Validatorless.multiple([
                 Validatorless.required("The field is obligatory"),
-                Validatorless.min(3,
-                    "Length cannot be less than @size".trParams({"size": "3"})),
-                Validatorless.max(
-                    12,
-                    "Length cannot be greater than @size"
-                        .trParams({"size": "12"})),
+                Validatorless.min(3, "Length cannot be less than @size".trParams({"size": "3"})),
+                Validatorless.max(12, "Length cannot be greater than @size".trParams({"size": "12"})),
               ]),
             ),
 
