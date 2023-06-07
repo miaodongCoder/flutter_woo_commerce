@@ -140,14 +140,42 @@ class OrderDetailsPage extends GetView<OrderDetailsController> {
         );
   }
 
-  // 寄件地、目的地:
+  // 寄件地、目的地
   Widget _buildBillAddress() {
-    return const Text("寄件地、目的地");
+    return <Widget>[
+      // Bill From, 商家发货地址写死
+      BuildBillAddress(
+        title: LocaleKeys.orderDetailsBillFrom.tr,
+        address: "Adidas Shoes",
+        city: "Kingston",
+        state: "New York",
+        country: "United States",
+        phone: "+44-213 543 230",
+      ).expanded(),
+
+      // 间距
+      SizedBox(
+        width: AppSpace.iconTextMedium,
+      ),
+
+      // Bill To
+      BuildBillAddress(
+        title: LocaleKeys.orderDetailsBillTo.tr,
+        address: controller.order.shipping?.address1,
+        city: controller.order.shipping?.city,
+        state: controller.order.shipping?.state,
+        country: controller.order.shipping?.country,
+        phone: controller.order.billing?.phone,
+      ).expanded(),
+    ].toRow().paddingAll(AppSpace.card).card().paddingAll(AppSpace.listRow);
   }
 
-  // 商品列表:
+  // 商品列表
   Widget _buildProductsList() {
-    return const Text("商品列表");
+    return BuildProductList(
+      lineItems: controller.order.lineItems ?? [],
+      currencySymbol: controller.order.currencySymbol,
+    ).paddingAll(AppSpace.card).card().paddingBottom(AppSpace.listRow);
   }
 
   // 小计:
